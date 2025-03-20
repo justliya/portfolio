@@ -1,16 +1,16 @@
-
-"use client";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useState } from "react";
-import MenuItem from "./menu-items";
-import { GithubIcon, LinkedInIcon } from "./social-icons";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+'use client';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { useState } from 'react';
+import MenuItem  from './menu-items';
+import { GithubIcon, LinkedInIcon } from './social-icons';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const navItems = [
-  { name: "Projects", href: "#work" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "Projects", href: "/projects" },
+  { name: "Skills", href: "/skills" },
+  { name: "Experience", href: "/experience" },
+
 ];
 
 const socialLinks = {
@@ -23,7 +23,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
+  useMotionValueEvent(scrollY, 'change', (latest) => {
     setIsScrolled(latest > 50);
   });
 
@@ -31,11 +31,10 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed w-full z-50 ${
-        isScrolled
-          ? "backdrop-blur-2xl bg-background/90 shadow-2xl shadow-primary/10"
-          : "backdrop-blur-lg bg-background/50"
-      } transition-all duration-300 ease-out`}
+      className={`fixed w-full z-50 ${isScrolled
+        ? 'backdrop-blur-2xl bg-background/90 shadow-2xl shadow-primary/10'
+        : 'backdrop-blur-lg bg-background/50'
+        } transition-all duration-300 ease-out`}
     >
       <div className="max-w-7xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
@@ -51,20 +50,17 @@ export default function Navbar() {
                   AJ
                 </span>
               </div>
-            </div>
 
+            </div>
             <span className="font-semibold text-content/90 group-hover:text-primary transition-colors">
-              Aaliyah Johnson
+            Aaliyah Johnson
             </span>
           </motion.div>
 
           {/* Desktop Navigation */}
-
           <div className="hidden md:flex items-center gap-6">
-            <div
-              className="flex items-center gap-6 bg-background/80 px-4 py-2 
-            rounded-full border border-white/5 shadow-lg shadow-primary/5"
-            >
+            <div className="flex items-center gap-6 bg-background/80 px-4 py-2 
+            rounded-full border border-white/5 shadow-lg shadow-primary/5">
               {navItems.map((item, i) => (
                 <MenuItem key={item.name} index={i} href={item.href}>
                   {item.name}
@@ -149,3 +145,5 @@ export default function Navbar() {
     </motion.nav>
   );
 }
+
+
