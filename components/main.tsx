@@ -2,29 +2,30 @@
 'use client';
 import { motion } from "framer-motion";
 import { FaNode, FaReact } from "react-icons/fa";
-import { SiD3Dotjs, SiFirebase, SiGraphql, SiNextdotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { SiFirebase, SiTypescript } from "react-icons/si";
 import Image from "next/image";
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
 
 
 const projects = [
     {
-        title: "Skyline",
+        title: "Promptly",
         description: "Modern shopping experinece with Next.js and Typescript",
         tech: [
-            { name: "React", icon: FaReact, color: "#61DAFB" },
-            { name: "Next.js", icon: SiNextdotjs, color: "000000" },
-            { name: "Tailwind", icon: SiTailwindcss, color: "06B6D4" },
-
+            { name: "React Native", icon: FaReact, color: "#61DAFB" },
+            { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+            { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+            { name: "Node.js", icon: FaNode, color: "#339933" }
         ],
         image: '/projects/ecommerce.png'
     },
     {
-        title: "Promptly",
+        title: "Skyline",
         description: "Real-time data visualization platform",
         tech: [
+            { name: "React Native", icon: FaReact, color: "#61DAFB" },
             { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-            { name: "D3.js", icon: SiD3Dotjs, color: "#F9A03C" },
+            { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
             { name: "Node.js", icon: FaNode, color: "#339933" }
         ],
         image: '/projects/analytics.jpg'
@@ -35,7 +36,8 @@ const projects = [
         tech: [
             { name: "React Native", icon: FaReact, color: "#61DAFB" },
             { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-            { name: "GraphQL", icon: SiGraphql, color: "#E535AB" }
+            { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+            { name: "Node.js", icon: FaNode, color: "#339933" },
         ],
         image: '/projects/mobile.jpg'
     },
