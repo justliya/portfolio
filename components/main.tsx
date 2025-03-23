@@ -9,7 +9,7 @@ import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
 
 const projects = [
     {
-        title: "E-commerce Platform",
+        title: "Skyline",
         description: "Modern shopping experinece with Next.js and Typescript",
         tech: [
             { name: "React", icon: FaReact, color: "#61DAFB" },
@@ -20,7 +20,7 @@ const projects = [
         image: '/projects/ecommerce.png'
     },
     {
-        title: "Analytics Dashboard",
+        title: "Promptly",
         description: "Real-time data visualization platform",
         tech: [
             { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
@@ -30,7 +30,7 @@ const projects = [
         image: '/projects/analytics.jpg'
     },
     {
-        title: "Mobile Application",
+        title: "NeuroInsight",
         description: "Cross-platform mobile app for health tracking",
         tech: [
             { name: "React Native", icon: FaReact, color: "#61DAFB" },
