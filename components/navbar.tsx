@@ -59,7 +59,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            <div className="flex items-center gap-6 bg-background/80 px-4 py-2 
+            <div className="flex items-center gap-6 bg-background/80 px-4 py-1.5 
             rounded-full border border-white/5 shadow-lg shadow-primary/5">
               {navItems.map((item, i) => (
                 <MenuItem key={item.name} index={i} href={item.href}>

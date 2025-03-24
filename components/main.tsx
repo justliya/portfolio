@@ -1,45 +1,47 @@
-
 'use client';
 import { motion } from "framer-motion";
 import { FaNode, FaReact } from "react-icons/fa";
 import { SiFirebase, SiTypescript } from "react-icons/si";
 import Image from "next/image";
-import { ArrowUpRightIcon } from "@heroicons/react/16/solid";
+
 
 
 const projects = [
     {
         title: "Promptly",
-        description: "Modern shopping experinece with Next.js and Typescript",
+        description: "AI prompt assistant that helps users create, edit, and manage prompts with ease in a clean, mobile-friendly interface.",
         tech: [
             { name: "React Native", icon: FaReact, color: "#61DAFB" },
             { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
             { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
             { name: "Node.js", icon: FaNode, color: "#339933" }
         ],
-        image: '/projects/ecommerce.png'
+        image: '/projects/ecommerce.png',
+
     },
     {
         title: "Skyline",
-        description: "Real-time data visualization platform",
+        description: "AI-powered baseball companion that explains key plays, analyzes matchups, and predicts win probabilities.",
         tech: [
             { name: "React Native", icon: FaReact, color: "#61DAFB" },
             { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
             { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
             { name: "Node.js", icon: FaNode, color: "#339933" }
         ],
-        image: '/projects/analytics.jpg'
+        image: '/projects/analytics.jpg',
+        link: "https://devpost.com/software/skyline-x20soe"
     },
     {
         title: "NeuroInsight",
-        description: "Cross-platform mobile app for health tracking",
+        description: "AI assistant designed to support neurodivergent users with personalized planning tools, and well-being insights tailored to their unique routines and needs.",
         tech: [
             { name: "React Native", icon: FaReact, color: "#61DAFB" },
             { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
             { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
             { name: "Node.js", icon: FaNode, color: "#339933" },
         ],
-        image: '/projects/mobile.jpg'
+        image: '/projects/mobile.jpg',
+
     },
 ]
 
@@ -70,101 +72,89 @@ export default function Main() {
 
                     {
                         projects.map((project, i) => (
-                            <motion.div
+                            <a
                                 key={i}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: i * 0.1 }}
-                                whileHover={{
-                                    y: -10,
-                                    transition: { duration: 0.2 }
-                                }}
-
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="group relative h-[500px] rounded-3xl overflow-hidden
-                    bg-surface border border-white/10 cursor-pointer"
+                                bg-surface border border-white/10 cursor-pointer hover:shadow-lg transition-transform duration-300"
                             >
-                                {/* Image Section */}
                                 <motion.div
-                                    className="h-[250px] relative"
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        sizes="(max-width: 768px) 100vw, 33vw"
-                                        className="object-cover"
-                                        priority
-                                    />
-                                </motion.div>
-
-                                {/* Content Section */}
-                                <motion.div
-                                    className="p-6 h-[25px] bg-surface"
-                                    transition={{ duration: 0.3 }}
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: i * 0.1 }}
+                                    whileHover={{ y: -10 }}
                                 >
 
-                                    <div className="flex justify-between items-start
-                            mb-4 group/title">
+                                    {/* Image Section */}
+                                    <motion.div
+                                        className="h-[250px] relative"
+                                        whileHover={{ scale: 1.05 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            sizes="(max-width: 768px) 100vw, 33vw"
+                                            className="object-cover"
+                                            priority
+                                        />
+                                    </motion.div>
 
-                                        <h3 className="text-2xl font-bold text-content">{project.title}</h3>
-                                        <ArrowUpRightIcon className="h-6 w-6 text-content/50
-                                        group-hover/title:text-primary transition-colors duration-300"/>
+                                    {/* Content Section */}
+                                    <motion.div
+                                        className="p-6 h-[25px] bg-surface"
+                                        transition={{ duration: 0.3 }}
+                                    >
 
-                                    </div>
-                                    <p className="text-content/80 mb-4">{project.description}</p>
+                                        <div className="flex justify-between items-start
+                                mb-4 group/title">
 
-                                    <div className="flex flex-wrap gap-2">
+                                            <h3 className="text-2xl font-bold text-content">{project.title}</h3>
+                                            <motion.div className="h-6 w-6 text-content/50
+                                            group-hover/title:text-primary transition-colors duration-300
+                                            hover:scale-110">
 
-                                        {
-                                            project.tech.map((tech, j) => (
-                                                <span
-                                                    key={j}
-                                                    className="px-3 py-1 rounded-full bg-white/5 text-content/80
-                                            text-sm border border-white/5
-                                            hover:bg-surface transition-colors flex items-center
-                                            gap-1.5 group/tech"
-                                                >
-                                                    <tech.icon
-                                                        style={{ color: tech.color }}
-                                                        className="w-4 h-4 transition-colors" />
-                                                    <span className="group-hover/tech:text-content transition-colors">
-                                                        {tech.name}
+                                            </motion.div>
+
+                                        </div>
+                                        <p className="text-content/80 mb-4">{project.description}</p>
+
+                                        <div className="flex flex-wrap gap-2">
+
+                                            {
+                                                project.tech.map((tech, j) => (
+                                                    <span
+                                                        key={j}
+                                                        className="px-3 py-1 rounded-full bg-white/5 text-content/80
+                                                text-sm border border-white/5
+                                                hover:bg-surface transition-colors flex items-center
+                                                gap-1.5 group/tech"
+                                                    >
+                                                        <tech.icon
+                                                            style={{ color: tech.color }}
+                                                            className="w-4 h-4 transition-colors" />
+                                                        <span className="group-hover/tech:text-content transition-colors">
+                                                            {tech.name}
+                                                        </span>
                                                     </span>
-                                                </span>
-                                            ))
-                                        }
+                                                ))
+                                            }
 
-                                    </div>
+                                        </div>
 
+                                    </motion.div>
                                 </motion.div>
-                            </motion.div>
+                            </a>
                         ))
                     }
 
 
                 </div>
-                {/* View More Button */}
-                <motion.div 
-                initial = {{opacity:0, y: 20}}
-                whileInView={{opacity:1, y:0}}
-                transition={{delay:0.4}}
-                className="flex justify-center mt-20 relative z-[5]"
-                >
-
-                    <button className="relative px-8 py-3 rounded-full bg-surface
-                    border border-white/10 hover:border-primary/10 transition-all group">
-                        <span className="text-content transition-colors
-                        relative z-[1]">
-                        View All Projects
-                        </span>
-                        <div className="absolute inset-0 rounded-full
-                        bg-gradient-to-r from-primary/10 to-tertiary/10
-                        opacity-0 group-hover:opacity-100 transition-opacity"/>
-                    </button>
-
-                </motion.div>
+              
+            
             </div>
 
         </section>
