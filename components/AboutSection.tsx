@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Heart, Users, Code, Lightbulb } from "lucide-react";
 
