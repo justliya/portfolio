@@ -126,12 +126,18 @@ export default function BlogSection() {
           className="max-w-4xl mx-auto"
         >
           <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/30 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-purple-400 mb-4">Featured Project: GetHiredAI</h3>
+            <h3 className="text-2xl font-bold text-purple-400 mb-4">🚀 Featured Project: GetHiredAI</h3>
             <p className="text-gray-300 mb-6">
-              My most advanced machine learning project - an autonomous multi-agent job search assistant 
-              that showcases cutting-edge AI orchestration, custom MCP server development, and real-world 
-              problem solving through intelligent automation.
+              My most advanced machine learning project - born from experiencing hiring bias firsthand. 
+              This autonomous multi-agent system doesn't just find jobs; it addresses systemic exclusion 
+              in traditional hiring by democratizing access to opportunities through intelligent automation.
             </p>
+            <div className="bg-gray-800/50 rounded-lg p-4 mb-6 border-l-4 border-purple-500">
+              <p className="text-gray-300 italic text-sm">
+                "When creating GetHiredAI, I wasn't just using tech skills—I was addressing the exclusion 
+                in traditional hiring systems. This project embodies my mission to transform barriers into bridges."
+              </p>
+            </div>
             <div className="flex flex-wrap gap-4">
               <a 
                 href="https://devpost.com/software/gethired-g6kxs2"

@@ -90,7 +90,7 @@ export default function Main() {
                                 href={project.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group relative h-[500px] rounded-3xl overflow-hidden
+                                className="group relative h-[520px] rounded-3xl overflow-hidden
                                 bg-surface border border-white/10 cursor-pointer hover:shadow-lg transition-transform duration-300"
                             >
                                 <motion.div
@@ -102,7 +102,7 @@ export default function Main() {
 
                                     {/* Image Section */}
                                     <motion.div
-                                        className="h-[250px] relative"
+                                        className="h-[240px] relative"
                                         whileHover={{ scale: 1.05 }}
                                         transition={{ duration: 0.2 }}
                                     >
@@ -118,7 +118,7 @@ export default function Main() {
 
                                     {/* Content Section */}
                                     <motion.div
-                                        className="p-6 h-[25px] bg-surface"
+                                        className="p-6 h-[280px] bg-surface flex flex-col"
                                         transition={{ duration: 0.3 }}
                                     >
 
@@ -133,22 +133,22 @@ export default function Main() {
                                             </motion.div>
 
                                         </div>
-                                        <p className="text-content/80 mb-4">{project.description}</p>
+                                        <p className="text-content/80 mb-4 flex-grow text-sm leading-relaxed">{project.description}</p>
 
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap gap-2 mt-auto">
 
                                             {
                                                 project.tech.map((tech, j) => (
                                                     <span
                                                         key={j}
-                                                        className="px-3 py-1 rounded-full bg-white/5 text-content/80
-                                                text-sm border border-white/5
+                                                        className="px-2 py-1 rounded-full bg-white/5 text-content/80
+                                                text-xs border border-white/5
                                                 hover:bg-surface transition-colors flex items-center
                                                 gap-1.5 group/tech"
                                                     >
                                                         <tech.icon
                                                             style={{ color: tech.color }}
-                                                            className="w-4 h-4 transition-colors" />
+                                                            className="w-3 h-3 transition-colors" />
                                                         <span className="group-hover/tech:text-content transition-colors">
                                                             {tech.name}
                                                         </span>

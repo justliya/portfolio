@@ -52,8 +52,8 @@ export default function Hero() {
                             className="text-xl text-content/80 mb-8"
                         >
 
-                            Specializing in AI/ML Engineering, Multi-Agent Systems, and Full-Stack Development.
-                            Building intelligent applications that solve real-world problems with modern tech stacks.
+                            Neurodivergent Black woman transforming barriers into bridges through AI and technology.
+                            Building inclusive, intelligent systems that empower marginalized communities and solve real-world problems.
 
                         </motion.p>
 
