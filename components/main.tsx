@@ -8,15 +8,40 @@ import Image from "next/image";
 
 const projects = [
     {
-        title: "Promptly",
-        description: "AI prompt assistant that helps users create, edit, and manage prompts with ease in a clean, mobile-friendly interface.",
+        title: "GetHiredAI",
+        description: "Multi-agent job search platform using Google ADK and MCP to automate workflows with intelligent agent coordination.",
         tech: [
-            { name: "React Native", icon: FaReact, color: "#61DAFB" },
+            { name: "Python", icon: FaNode, color: "#3776AB" },
             { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
             { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-            { name: "Node.js", icon: FaNode, color: "#339933" }
+            { name: "Google ADK", icon: FaNode, color: "#4285F4" }
         ],
         image: '/projects/ecommerce.png',
+        link: "#"
+    },
+    {
+        title: "Promptly",
+        description: "AI prompt assistant published on Apple App Store with 100+ downloads, helping creators craft high-quality prompts.",
+        tech: [
+            { name: "React Native", icon: FaReact, color: "#61DAFB" },
+            { name: "OpenAI API", icon: SiTypescript, color: "#412991" },
+            { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+            { name: "Expo", icon: FaNode, color: "#000020" }
+        ],
+        image: '/projects/mobile.jpg',
+        link: "#"
+    },
+    {
+        title: "TSLA Stock Detector",
+        description: "Python tool analyzing Tesla stock performance using binary search algorithms with real-time market data visualization.",
+        tech: [
+            { name: "Python", icon: FaNode, color: "#3776AB" },
+            { name: "Pandas", icon: SiTypescript, color: "#150458" },
+            { name: "Matplotlib", icon: SiFirebase, color: "#11557C" },
+            { name: "Stock API", icon: FaNode, color: "#339933" }
+        ],
+        image: '/projects/analytics.jpg',
+        link: "#"
 
     },
     {
@@ -30,18 +55,6 @@ const projects = [
         ],
         image: '/projects/analytics.jpg',
         link: "https://devpost.com/software/skyline-x20soe"
-    },
-    {
-        title: "NeuroInsight",
-        description: "AI assistant designed to support neurodivergent users with personalized planning tools, and well-being insights tailored to their unique routines and needs.",
-        tech: [
-            { name: "React Native", icon: FaReact, color: "#61DAFB" },
-            { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-            { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-            { name: "Node.js", icon: FaNode, color: "#339933" },
-        ],
-        image: '/projects/mobile.jpg',
-
     },
 ]
 

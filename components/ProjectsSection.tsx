@@ -1,35 +1,56 @@
 "use client";
 
-
-
 const projects = [
+  {
+    name: "GetHiredAI - Multi-Agent Job Search Platform",
+    bullets: [
+      "Python-based platform using Google Agent Development Kit (ADK) and MCP to automate job search workflows.",
+      "Designed and deployed custom remote MCP server for dynamic, multi-step agent coordination.",
+      "Architected modular sub-agent logic with intelligent prompt routing and coordinated action sequencing.",
+      "Integrated Firebase Authentication, Firestore, and Storage for secure user management and data persistence.",
+      "Enhanced job matching efficiency and personalization through minimal user input automation."
+    ],
+    link: "#",
+  },
+  {
+    name: "Promptly - AI Prompt Assistant (Apple App Store)",
+    bullets: [
+      "React Native mobile app helping creators craft high-quality AI prompts with precision.",
+      "Integrated Firebase for authentication, NoSQL database management, and state persistence.",
+      "Implemented CI/CD pipelines using GitHub Actions and EAS/Revopush for seamless OTA updates.",
+      "Leveraged OpenAI API to generate prompts optimized for relevance, clarity, and structure.",
+      "Achieved 100+ downloads within first 2 weeks through performance tuning and intuitive UX."
+    ],
+    link: "#",
+  },
+  {
+    name: "TSLA Stock Threshold Detector",
+    bullets: [
+      "Python-based tool analyzing Tesla stock performance using binary search algorithms.",
+      "Identifies first timestamp TSLA stock crossed target price thresholds with real-time data.",
+      "Integrated Stock API for accurate and dynamic historical market data analysis.",
+      "Used Matplotlib for trend visualization with annotated plots highlighting key crossing points.",
+      "Demonstrates efficient algorithm implementation on real-world financial data."
+    ],
+    link: "#",
+  },
   {
     name: "Skyline - Interactive Baseball Platform",
     bullets: [
-      "Built during the Google Cloud x MLB Hackathon.",
-      "Real-time AI sports analytics using React Native, Firebase, Node.js, and MLB’s GUMBO API.",
-      "Helps fans understand game momentum, matchups, and win probabilities.",
-      "Led UI/UX and AI integration to support both casual fans and analysts."
+      "Built during Google Cloud x MLB Hackathon using React Native, Firebase, and MLB's GUMBO API.",
+      "Real-time AI sports analytics helping fans understand game momentum and win probabilities.",
+      "Led UI/UX design and AI integration to support both casual fans and analysts.",
+      "Implemented live data processing for comprehensive matchup analysis and predictions."
     ],
     link: "https://devpost.com/software/skyline-x20soe",
   },
   {
     name: "NeuroInsight - AI Study Assistant",
     bullets: [
-      "Empowers neurodivergent users with task planning, routine tracking, and emotional check-ins.",
-      "Designed for accessibility and modular customization.",
-      "Built using React Native, Firebase, and TypeScript.",
-      "Adapts dynamically to user habits and priorities."
-    ],
-    link: "#",
-  },
-  {
-    name: "Promptly - AI Prompt Assistant",
-    bullets: [
-      "Mobile-friendly app for creating, editing, and managing AI prompts.",
-      "Secure API key storage and Firestore integration for personal prompt libraries.",
-      "Features dynamic UI updates and customization without subscription.",
-      "Built for usability, scalability, and autonomy."
+      "Empowers neurodivergent users with personalized task planning and routine tracking.",
+      "Built using React Native, Firebase, and TypeScript with accessibility-first design.",
+      "Features emotional check-ins and modular customization for individual needs.",
+      "Adapts dynamically to user habits and priorities for enhanced productivity support."
     ],
     link: "#",
   },
@@ -43,7 +64,7 @@ const ProjectsSection: React.FC = () => {
           Projects
         </span>
       </h1>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
         {projects.map((project, index) => (
           <a
             key={index}
@@ -56,7 +77,6 @@ const ProjectsSection: React.FC = () => {
               <h2 className="text-xl font-semibold group-hover:text-primary">
                 {project.name}
               </h2>
-          
             </div>
             <ul className="list-disc pl-4 text-sm text-gray-400 space-y-1">
               {project.bullets.map((point, i) => (

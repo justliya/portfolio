@@ -1,29 +1,46 @@
-import {Code, Sparkles } from 'lucide-react';
+import { Code, Sparkles, GraduationCap } from 'lucide-react';
 
 const experiences = [
   {
     icon: <Sparkles className="w-6 h-6 text-purple-400" />,
     role: 'Prompt Engineer',
     company: 'Outlier AI',
-    time: '2024 – Present · Remote',
+    time: 'July 2024 – Present · Remote',
     description: [
-      'Crafted and fine-tuned prompts to enhance AI creativity, factuality, and relevance.',
-      'Developed multimodal prompts for diverse media inputs.',
-      'Conducted real-time evaluations and research to improve prompt accuracy and user value.'
+      'Designed prompts across domains boosting instruction-following and contextual accuracy by 40% with 95% acceptance rate.',
+      'Conducted research and fact-checking for 300+ content items, reducing revision cycles by 33%.',
+      'Authored ideal model responses using structured rubrics, achieving 22% reduction in hallucination rates.',
+      'Enhanced training quality through peer review, improving factual accuracy by 35%.',
+      'Led cross-functional QA initiatives contributing to 10% increase in coherence scores across LLM outputs.'
     ],
-    badges: ['Prompt Engineering', 'OpenAI API', 'Gemini', 'LangChain']
+    badges: ['GPT-4', 'Gemini', 'Prompt Engineering', 'OpenAI API', 'LLM Training', 'QA']
   },
   {
     icon: <Code className="w-6 h-6 text-blue-400" />,
-    role: 'Software Engineer Training',
+    role: 'Software Engineer Apprentice',
     company: 'Coding Temple',
-    time: '2024 – Present · Remote',
+    time: 'October 2024 – May 2025 · Remote',
     description: [
-      'Built fullstack apps with React + Flask, including third-party API integrations.',
-      'Demonstrated adaptability and fast learning in high-pressure coding environments.',
-      'Contributed to group projects with modern dev stacks.'
+      'Engineered full-stack applications using React.js, React Native, Node.js, Next.js, and Python with focus on accessibility.',
+      'Designed RESTful APIs using Flask and Node.js, integrating SQL and NoSQL databases.',
+      'Executed unit and integration testing with Jest, improving code reliability and maintainability.',
+      'Deployed applications using Firebase, Vercel, and configured CI/CD pipelines via GitHub Actions.',
+      'Applied OOP principles and Redux for state management in modular, scalable applications.'
     ],
-    badges: ['React', 'Flask', 'JavaScript', 'Python']
+    badges: ['React', 'Node.js', 'Python', 'Flask', 'Firebase', 'Jest', 'CI/CD']
+  },
+  {
+    icon: <GraduationCap className="w-6 h-6 text-green-400" />,
+    role: 'B.A. Interdisciplinary Studies',
+    company: 'Columbia College Chicago',
+    time: '2020 – 2024 · Chicago, IL',
+    description: [
+      'Specialized in Deaf Studies and Arts in Health, combining creative insight with technical skill.',
+      'Developed human-centered design approach for accessible technology solutions.',
+      'Built foundation in empathy-driven development and inclusive design principles.',
+      'Integrated creative problem-solving with systematic analytical thinking.'
+    ],
+    badges: ['Accessibility', 'Human-Centered Design', 'Creative Problem Solving', 'Inclusive Design']
   }
 ];
 
@@ -32,7 +49,7 @@ export default function ExperienceSection() {
     <section className="py-16 px-10 bg-gradient-to-b from-[#0f1117] to-[#141926] text-white">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-center">
-          <span className="inline-block border-b-4 border-purple-500 pb-1 z-95">Experience</span>
+          <span className="inline-block border-b-4 border-purple-500 pb-1">Experience & Education</span>
         </h2>
         <div className="grid gap-8">
           {experiences.map((exp, i) => (
