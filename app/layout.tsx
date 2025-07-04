@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Aaliyah Johnson - AI Engineer & Full-Stack Developer",
+  description: "AI Engineer and Full-Stack Developer specializing in multi-agent systems, machine learning, and accessible technology solutions.",
 };
 
 export default function RootLayout({

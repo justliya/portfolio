@@ -52,8 +52,8 @@ export default function Hero() {
                             className="text-xl text-content/80 mb-8"
                         >
 
-                            Speciliazing in React, Node.js, Machine Learning, algorithms, and Cloud Architecture.
-                            Building scalable application with modern tech stacks.
+                            Specializing in AI/ML Engineering, Multi-Agent Systems, and Full-Stack Development.
+                            Building intelligent applications that solve real-world problems with modern tech stacks.
 
                         </motion.p>
 

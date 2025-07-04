@@ -2,15 +2,16 @@
 
 const projects = [
   {
-    name: "GetHiredAI - Multi-Agent Job Search Platform",
+    name: "GetHiredAI - Autonomous Multi-Agent Job Search Assistant",
     bullets: [
-      "Python-based platform using Google Agent Development Kit (ADK) and MCP to automate job search workflows.",
-      "Designed and deployed custom remote MCP server for dynamic, multi-step agent coordination.",
-      "Architected modular sub-agent logic with intelligent prompt routing and coordinated action sequencing.",
-      "Integrated Firebase Authentication, Firestore, and Storage for secure user management and data persistence.",
-      "Enhanced job matching efficiency and personalization through minimal user input automation."
+      "Autonomous multi-agent system automating entire job application pipeline through coordinated AI agents.",
+      "Custom remote MCP server with JSearch API integration for dynamic tool orchestration and agent workflows.",
+      "Google ADK architecture with modular sub-agent logic, prompt routing, and multi-step coordination.",
+      "Standardized JSON schemas for inter-agent communication with fallback logic for API timeouts.",
+      "Reduces manual application time from hours to minutes with contextually relevant resume modifications.",
+      "Firebase integration: Authentication, Firestore data persistence, and Storage for resume management."
     ],
-    link: "#",
+    link: "https://devpost.com/software/gethired-g6kxs2",
   },
   {
     name: "Promptly - AI Prompt Assistant (Apple App Store)",

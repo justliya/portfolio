@@ -110,11 +110,48 @@ export default function BlogSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-16"
+          className="text-center mt-16 mb-8"
         >
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800/50 rounded-full border border-gray-700">
             <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
             <span className="text-gray-400">More articles coming soon...</span>
+          </div>
+        </motion.div>
+
+        {/* Featured Project Callout */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/30 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-purple-400 mb-4">Featured Project: GetHiredAI</h3>
+            <p className="text-gray-300 mb-6">
+              My most advanced machine learning project - an autonomous multi-agent job search assistant 
+              that showcases cutting-edge AI orchestration, custom MCP server development, and real-world 
+              problem solving through intelligent automation.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href="https://devpost.com/software/gethired-g6kxs2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
+              >
+                <span>View Demo</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a 
+                href="https://github.com/justliya/GetHired.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+              >
+                <span>GitHub Repository</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>

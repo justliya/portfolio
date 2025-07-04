@@ -9,15 +9,15 @@ import Image from "next/image";
 const projects = [
     {
         title: "GetHiredAI",
-        description: "Multi-agent job search platform using Google ADK and MCP to automate workflows with intelligent agent coordination.",
+        description: "Autonomous multi-agent job search assistant that automates the entire application pipeline through coordinated AI agents with custom MCP server integration.",
         tech: [
             { name: "Python", icon: FaNode, color: "#3776AB" },
-            { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+            { name: "Google ADK", icon: SiTypescript, color: "#4285F4" },
             { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-            { name: "Google ADK", icon: FaNode, color: "#4285F4" }
+            { name: "OpenAI API", icon: FaNode, color: "#412991" }
         ],
         image: '/projects/ecommerce.png',
-        link: "#"
+        link: "https://devpost.com/software/gethired-g6kxs2"
     },
     {
         title: "Promptly",

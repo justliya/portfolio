@@ -88,12 +88,13 @@ const skills = [
     ]
   },
   {
-    name: "LLM & AI Technologies",
+    name: "AI/ML & Multi-Agent Systems",
     icon: SiOpenai,
     points: [
-      "GPT-4, Gemini, and OpenAI API integration for intelligent applications",
-      "Prompt engineering with 40% improvement in task success rates",
-      "Multi-modal AI generation and structured response optimization"
+      "Multi-agent orchestration with Google ADK and Model Context Protocol (MCP)",
+      "GPT-4, Gemini integration with 40% improvement in task success rates at Outlier AI",
+      "Custom MCP server development for dynamic agent workflows and tool coordination",
+      "Prompt engineering across domains with 95% acceptance rate and 22% reduction in hallucinations"
     ]
   },
   {
