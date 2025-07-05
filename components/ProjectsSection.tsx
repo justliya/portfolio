@@ -53,7 +53,7 @@ const projects = [
       "Features emotional check-ins and modular customization for individual needs.",
       "Adapts dynamically to user habits and priorities for enhanced productivity support."
     ],
-    link: "#",
+    link: "https://testflight.apple.com/join/7dGeeFcX",
   },
 ];
 

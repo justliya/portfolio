@@ -1,49 +1,43 @@
-
-'use client';
+"use client";
 import { ParticleCanvas } from "@/hooks/particle";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
-
 export default function Hero() {
-    const {scrollY} = useScroll();
-    const y   =useTransform(scrollY, [0, 500], [0, 100]);
-    return (
-        <section className="min-h-screen relative overflow-hidden bg-black">
-            <ParticleCanvas/>
-            <div className="max-w-7xl mx-auto px-6 pt-32">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
-                    {/* Text content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1, ease: 'easeOut' }}
-                        className="relative group lg:w-1/2"
-                    >
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.5 }}
-                            className="text-6xl md:text-8xl font-bold bg-gradient-to-r
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 100]);
+  return (
+    <section className="min-h-screen relative overflow-hidden bg-black">
+      <ParticleCanvas />
+      <div className="max-w-7xl mx-auto px-6 pt-32">
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          {/* Text content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative group lg:w-1/2"
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-6xl md:text-8xl font-bold bg-gradient-to-r
         from-primary via-secondary to-tertiary 
         bg-clip-text text-transparent mb-6"
-                        >
-
-                            Full Stack
-
-                            <br />
-
-                            <motion.span
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.8 }}
-                                className="bg-gradient-to-r from-primary via-secondary
+            >
+              Full Stack
+              <br />
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="bg-gradient-to-r from-primary via-secondary
         to-tertiary bg-clip-text text-transparent"
-                            >
-                                Developer
-                            </motion.span>
-
-                        </motion.h1>
+              >
+                Developer
+              </motion.span>
+            </motion.h1>
 
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
@@ -81,64 +75,64 @@ export default function Hero() {
                                     bg-gradient-to-r from-primary/30
                                 via-secondary/30 to-tertiary/30
                                  opacity-50"
-                            />
-                            {/* Floating Animation */}
-                            <motion.div
-                                animate={{ y: [0, -20, 0] }}
-                                transition={{
-                                    duration: 6,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                                className="realtive w-full aspect-square 
+              />
+              {/* Floating Animation */}
+              <motion.div
+                animate={{ y: [0, -20, 0] }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="realtive w-full aspect-square 
                                 rounded-3xl overflow-hidden
                                 border border-white/10 bg-surface 
                                 backdrop-blur-sm"
-                            >
-                                <Image src="/portfolio.jpg"
-                                    alt="Avatar"
-                                    fill
-                                    className="object-cover scale-110 group-hover:scale-100
-                                            transition-transform duration-500" />
-                                <div
-                                    className="absoulte inset-0 bg-gradient-to-t
+              >
+                <Image
+                  src="/portfolio.jpg"
+                  alt="Avatar"
+                  fill
+                  className="object-cover scale-110 group-hover:scale-100
+                                            transition-transform duration-500"
+                />
+                <div
+                  className="absoulte inset-0 bg-gradient-to-t
                                         from-black/60 to-transparent"
-                                />
+                />
 
-                                <motion.div
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{
-                                        delay: 0.6
-                                    }}
-                                    className="absolute bottom-8 left-8"
-                                >
-
-                <div className="text-2xl font-bold text-content">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    delay: 0.6,
+                  }}
+                  className="absolute bottom-8 left-8"
+                >
+                  <div className="text-2xl font-bold text-content">
                     Based in
                     <motion.span
                       className="block bg-gradient-to-r
                        from-primary to-secondary bg-clip-text text-transparent"
-                      animate={{ backgroundPosition: ['0% 50%', '100% 50%'] }}
+                      animate={{ backgroundPosition: ["0% 50%", "100% 50%"] }}
                       transition={{
                         duration: 3,
                         repeat: Infinity,
-                        repeatType: 'mirror'
+                        repeatType: "mirror",
                       }}
                       style={{
-                        backgroundSize: '200% 200%'
+                        backgroundSize: "200% 200%",
                       }}
                     >
-                     Chicago, IL
+                      Chicago, IL
                     </motion.span>
                   </div>
-                 </motion.div>
-
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                </div>
+                </motion.div>
+              </motion.div>
             </div>
-        </section>
-    );
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
 }
