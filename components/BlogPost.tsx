@@ -257,24 +257,3 @@ export default function BlogPost({ post }: BlogPostProps) {
     </div>
   );
 }
-
-            <Link 
-              href="/blog"
-              className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to all posts</span>
-            </Link>
-            <button
-              onClick={handleShare}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
-            >
-              <Share2 className="w-4 h-4" />
-              <span>Share this post</span>
-            </button>
-          </div>
-        </motion.footer>
-      </div>
-    </div>
-  );
-}
