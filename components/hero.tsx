@@ -26,7 +26,8 @@ export default function Hero() {
         from-primary via-secondary to-tertiary 
         bg-clip-text text-transparent mb-6"
             >
-              Full Stack
+          AI Engineer 
+          
               <br />
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
@@ -35,7 +36,7 @@ export default function Hero() {
                 className="bg-gradient-to-r from-primary via-secondary
         to-tertiary bg-clip-text text-transparent"
               >
-                Developer
+                 / Full Stack Developer
               </motion.span>
             </motion.h1>
 

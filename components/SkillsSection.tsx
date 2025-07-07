@@ -1,27 +1,19 @@
 "use client";
 
-import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaAngular, FaVuejs } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaPython } from "react-icons/fa";
 import {
-  SiTailwindcss,
   SiTypescript,
   SiNextdotjs,
   SiJest,
   SiOpenai,
-  SiTensorflow,
   SiFirebase,
-  SiSupabase,
   SiExpo,
-  SiVercel,
-  SiRender,
   SiGooglecloud,
   SiRedux,
-  SiFlask,
   SiPostgresql,
-  SiMongodb,
-  SiYaml,
-  SiGithubactions,
+
 } from "react-icons/si";
-import { MdFunctions, MdApi, MdCloud } from "react-icons/md";
+
 
 const skills = [
   {
@@ -29,7 +21,7 @@ const skills = [
     icon: FaReact,
     points: [
       "Build responsive web and mobile applications with reusable components",
-      "Developed Promptly (100+ App Store downloads) and Skyline using React Native",
+      "Developed Promptly,  Skyline, and NeuroInsight using React Native",
       "Expert in hooks, state management, and performance optimization"
     ]
   },
@@ -37,7 +29,7 @@ const skills = [
     name: "Next.js",
     icon: SiNextdotjs,
     points: [
-      "Full-stack applications with SSR, API routes, and dynamic routing",
+      "Full-stack applications with API routes, and dynamic routing",
       "SEO-optimized architecture for portfolio and production applications",
       "Integrated with modern deployment platforms like Vercel"
     ]
@@ -84,7 +76,6 @@ const skills = [
     points: [
       "Cross-platform mobile app development and deployment",
       "Over-the-air (OTA) updates using EAS and Revopush",
-      "Published Promptly to Apple App Store with seamless update workflows"
     ]
   },
   {
@@ -92,9 +83,8 @@ const skills = [
     icon: SiOpenai,
     points: [
       "Multi-agent orchestration with Google ADK and Model Context Protocol (MCP)",
-      "GPT-4, Gemini integration with 40% improvement in task success rates at Outlier AI",
       "Custom MCP server development for dynamic agent workflows and tool coordination",
-      "Prompt engineering across domains with 95% acceptance rate and 22% reduction in hallucinations"
+      "Prompt engineering"
     ]
   },
   {
@@ -121,7 +111,7 @@ const skills = [
     points: [
       "Unit and integration testing with Jest for reliable code",
       "UI component validation and backend routing logic testing",
-      "QA initiatives improving coherence scores by 10% in LLM outputs"
+
     ]
   },
   {

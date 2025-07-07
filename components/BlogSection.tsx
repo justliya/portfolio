@@ -9,7 +9,7 @@ const blogPosts = [
     id: "mcp-job-search-server",
     title: "Building a Real-Time Job Search MCP Server: From API to Agent with HTTP Streaming and Google ADK",
     excerpt: "How I built and deployed a production-ready Model Context Protocol server that transforms any AI agent into a powerful job search assistant using FastMCP, JSearch API, and Google's Agent Development Kit.",
-    date: "2025-01-27",
+    date: "2025-06-23",
     readTime: "12 min read",
     tags: ["MCP", "AI", "Agents", "GoogleADK", "Python", "Streaming", "JobSearch", "VertexAI"],
     slug: "mcp-job-search-server"

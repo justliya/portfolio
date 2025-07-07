@@ -111,15 +111,14 @@ export default function BlogPost({ post }: BlogPostProps) {
         >
           <ReactMarkdown
             components={{
-              code({ node, inline, className, children, ...props }) {
+              code({ className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || '');
-                return !inline && match ? (
+                return match ? (
                   <SyntaxHighlighter
                     style={oneDark}
                     language={match[1]}
                     PreTag="div"
                     className="rounded-lg"
-                    {...props}
                   >
                     {String(children).replace(/\n$/, '')}
                   </SyntaxHighlighter>

@@ -5,8 +5,8 @@ import BlogPost from '@/components/BlogPost';
 const blogPosts = {
   'mcp-job-search-server': {
     title: "Building a Real-Time Job Search MCP Server: From API to Agent with HTTP Streaming and Google ADK",
-    date: "2025-01-27",
-    readTime: "12 min read",
+    date: "2025-06-27",
+    readTime: "5 min read",
     tags: ["MCP", "AI", "Agents", "GoogleADK", "Python", "Streaming", "JobSearch", "VertexAI"],
     content: `# Building a Real-Time Job Search MCP Server: From API to Agent with HTTP Streaming and Google ADK
 
@@ -303,7 +303,7 @@ The future of AI is agents that can act in the real world. MCP servers are the b
 
 ---
 
-*Ready to build your own MCP server? Check out the [complete source code](https://github.com/your-repo) and join the growing community of developers building the next generation of AI agents.*
+*Ready to build your own MCP server? Check out what you can accomplish [Here](https://github.com/justliya/gethired_agents.git) and join the growing community of developers building the next generation of AI agents.*
 
 **Tags:** #MCP #AI #Agents #GoogleADK #Python #Streaming #JobSearch #VertexAI`
   }
