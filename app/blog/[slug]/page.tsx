@@ -5,8 +5,8 @@ import BlogPost from '@/components/BlogPost';
 const blogPosts = {
   'ai-job-search-assistant': {
     title: "Building an AI-Powered Job Search Assistant: Automating the Modern Job Hunt",
-    date: "2025-01-15",
-    readTime: "15 min read",
+    date: "2025-07-1",
+    readTime: "8 min read",
     tags: ["AI", "A2A", "GoogleADK", "JobSearch", "MultiAgent", "Python", "Firebase", "Collaboration"],
     content: `# Building an AI-Powered Job Search Assistant: Automating the Modern Job Hunt
 
