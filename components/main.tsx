@@ -14,7 +14,7 @@ const projects = [
             { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
             { name: "OpenAI API", icon: FaNode, color: "#412991" }
         ],
-        image: '/projects/ecommerce.png',
+        image: '/projects/GetHired.png',
         link: "https://devpost.com/software/gethired-g6kxs2"
     },
     {
@@ -22,23 +22,23 @@ const projects = [
         description: "AI prompt assistant published on Apple App Store with 100+ downloads, helping creators craft high-quality prompts.",
         tech: [
             { name: "React Native", icon: FaReact, color: "#61DAFB" },
-            { name: "OpenAI API", icon: SiTypescript, color: "#412991" },
+            { name: "Typescript", icon: SiTypescript, color: "#412991" },
             { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-            { name: "Expo", icon: FaNode, color: "#000020" }
+      
         ],
-        image: '/projects/mobile.jpg',
+        image: '/projects/ecommerce.png',
         link: "#"
     },
     {
         title: "TSLA Stock Threshold Detector",
-        description: "Binary search algorithm detecting first Tesla stock threshold breach with visualization of market events including political impacts and all-time highs.",
+        description: "Binary search algorithm detecting stock threshold data",
         tech: [
             { name: "Python", icon: FaNode, color: "#3776AB" },
             { name: "Pandas", icon: SiFirebase, color: "#150458" },
             { name: "Matplotlib", icon: SiFirebase, color: "#11557C" },
-            { name: "Alpha Vantage API", icon: FaNode, color: "#339933" }
+         
         ],
-        image: '/projects/tsla-stock-chart.png',
+        image: '/projects/image.png',
         link: "https://github.com/justliya/Algorithm-Projects"
 
     },
