@@ -25,15 +25,16 @@ const projects = [
     link: "#",
   },
   {
-    name: "TSLA Stock Threshold Detector",
+    name: "TSLA Stock Threshold Detector (Binary Search Algorithm)",
     bullets: [
-      "Python-based tool analyzing Tesla stock performance using binary search algorithms.",
-      "Identifies first timestamp TSLA stock crossed target price thresholds with real-time data.",
-      "Integrated Stock API for accurate and dynamic historical market data analysis.",
-      "Used Matplotlib for trend visualization with annotated plots highlighting key crossing points.",
-      "Demonstrates efficient algorithm implementation on real-world financial data."
+      "Binary search algorithm efficiently detecting first occurrence of Tesla stock threshold breach in O(log n) time.",
+      "Visualizes TSLA stock data with key political and economic events (Trump Inauguration, All-Time High markers).",
+      "Integrated Alpha Vantage API for real historical market data from Dec 2024 - Mar 2025 period.",
+      "Matplotlib visualization with annotated plots showing threshold crossings and market crash analysis.",
+      "Demonstrates algorithm optimization on real-world financial data with monthly and daily view options.",
+      "Analyzes correlation between political events and Tesla stock performance during volatile market period."
     ],
-    link: "#",
+    link: "https://github.com/justliya/Algorithm-Projects",
   },
   {
     name: "Skyline - Interactive Baseball Platform",

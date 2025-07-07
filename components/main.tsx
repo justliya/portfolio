@@ -30,16 +30,16 @@ const projects = [
         link: "#"
     },
     {
-        title: "TSLA Stock Detector",
-        description: "Python tool analyzing Tesla stock performance using binary search algorithms with real-time market data visualization.",
+        title: "TSLA Stock Threshold Detector",
+        description: "Binary search algorithm detecting first Tesla stock threshold breach with visualization of market events including political impacts and all-time highs.",
         tech: [
             { name: "Python", icon: FaNode, color: "#3776AB" },
-            { name: "Pandas", icon: SiTypescript, color: "#150458" },
+            { name: "Pandas", icon: SiFirebase, color: "#150458" },
             { name: "Matplotlib", icon: SiFirebase, color: "#11557C" },
-            { name: "Stock API", icon: FaNode, color: "#339933" }
+            { name: "Alpha Vantage API", icon: FaNode, color: "#339933" }
         ],
-        image: '/projects/analytics.jpg',
-        link: "#"
+        image: '/projects/tsla-stock-chart.png',
+        link: "https://github.com/justliya/Algorithm-Projects"
 
     },
     {
