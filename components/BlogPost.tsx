@@ -191,7 +191,73 @@ export default function BlogPost({ post }: BlogPostProps) {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 pt-8 border-t border-gray-800"
         >
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start gap-6">
+            <div className="flex flex-col gap-4">
+              <Link 
+                href="/blog"
+                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Back to all posts</span>
+              </Link>
+              
+              {/* Author info */}
+              <div className="flex items-center gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
+                  AJ
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white">Aaliyah Johnson</h4>
+                  <p className="text-sm text-gray-400">AI Engineer & Full-Stack Developer</p>
+                  <div className="flex gap-3 mt-2">
+                    <a 
+                      href="https://www.linkedin.com/in/aaliyah-johnson-24a5762a1/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-400 hover:text-purple-300 text-sm transition-colors"
+                    >
+                      LinkedIn
+                    </a>
+                    <a 
+                      href="https://github.com/justliya"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-400 hover:text-purple-300 text-sm transition-colors"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex flex-col gap-4 sm:items-end">
+              <button
+                onClick={handleShare}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
+              >
+                <Share2 className="w-4 h-4" />
+                <span>Share this post</span>
+              </button>
+              
+              {/* Related posts suggestion */}
+              <div className="text-sm text-gray-400">
+                <p className="mb-2">More from this series:</p>
+                <Link 
+                  href="/blog"
+                  className="text-purple-400 hover:text-purple-300 transition-colors"
+                >
+                  View all AI engineering posts →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </motion.footer>
+      </div>
+    </div>
+  );
+}
+
             <Link 
               href="/blog"
               className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"

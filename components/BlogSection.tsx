@@ -6,6 +6,15 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 
 const blogPosts = [
   {
+    id: "ai-job-search-assistant",
+    title: "Building an AI-Powered Job Search Assistant: Automating the Modern Job Hunt",
+    excerpt: "How my partner La'Kaleigh Harris and I built a comprehensive AI-powered job search assistant using Google's A2A protocol and Agent Development Kit, featuring multi-agent orchestration and real-time collaboration.",
+    date: "2025-01-15",
+    readTime: "15 min read",
+    tags: ["AI", "A2A", "GoogleADK", "JobSearch", "MultiAgent", "Python", "Firebase", "Collaboration"],
+    slug: "ai-job-search-assistant"
+  },
+  {
     id: "mcp-job-search-server",
     title: "Building a Real-Time Job Search MCP Server: From API to Agent with HTTP Streaming and Google ADK",
     excerpt: "How I built and deployed a production-ready Model Context Protocol server that transforms any AI agent into a powerful job search assistant using FastMCP, JSearch API, and Google's Agent Development Kit.",
@@ -38,7 +47,7 @@ export default function BlogSection() {
         </motion.div>
 
         {/* Blog Posts Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-1 max-w-4xl mx-auto">
+        <div className="grid gap-8 lg:grid-cols-1 max-w-4xl mx-auto">
           {blogPosts.map((post, index) => (
             <motion.article
               key={post.id}
@@ -110,7 +119,7 @@ export default function BlogSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-16 mb-8"
+          className="text-center mt-12 mb-8"
         >
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800/50 rounded-full border border-gray-700">
             <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
@@ -118,37 +127,36 @@ export default function BlogSection() {
           </div>
         </motion.div>
 
-        {/* Featured Project Callout */}
+        {/* Newsletter Signup */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/30 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-purple-400 mb-4">Featured Project: GetHiredAI</h3>
-            <p className="text-gray-300 mb-6">
-              My most advanced machine learning project - an autonomous multi-agent job search assistant 
-              that showcases cutting-edge AI orchestration, custom MCP server development, and real-world 
-              problem solving through intelligent automation.
+          <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/30 rounded-2xl p-8 text-center">
+            <h3 className="text-2xl font-bold text-purple-400 mb-4">Stay Updated</h3>
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+              Get notified when I publish new articles about AI engineering, multi-agent systems, 
+              and building production-ready AI applications.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a 
-                href="https://devpost.com/software/gethired-g6kxs2"
+              <a
+                href="https://www.linkedin.com/in/aaliyah-johnson-24a5762a1/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
               >
-                <span>View Demo</span>
+                <span>Follow on LinkedIn</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a 
-                href="https://github.com/justliya/GetHired.git"
+              <a
+                href="https://github.com/justliya"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
               >
-                <span>GitHub Repository</span>
+                <span>GitHub Profile</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
