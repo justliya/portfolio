@@ -200,7 +200,7 @@ agent_metadata = {
 
 This allows agents to dynamically discover each other's capabilities without hard-coding integrations.
 
-### 2. Task-Based Communication
+###  Task-Based Communication
 
 We leveraged A2A's task-oriented messaging model. When a user initiates a job search, the Coordinator Agent creates a task that flows through our agent pipeline:
 
@@ -221,7 +221,7 @@ coordinator = Agent(
 )
 \`\`\`
 
-### 3. Asynchronous Processing with SSE
+###  Asynchronous Processing with SSE
 
 A2A's support for Server-Sent Events (SSE) was crucial for our long-running operations. Job searches and resume tailoring can take minutes, so we implemented streaming updates:
 
@@ -236,7 +236,7 @@ async for event in runner.run_async(
         # Handle intermediate results
 \`\`\`
 
-### 4. Multi-Modal Content Exchange
+###  Multi-Modal Content Exchange
 
 La'Kaleigh's resume agent showcases A2A's multi-modal capabilities. It exchanges various content types:
 - Text prompts and instructions
@@ -251,11 +251,11 @@ As A2A specifies:
 
 Here's how our system leverages A2A to orchestrate a complete job search:
 
-1. **User Request**: "Find me software engineering jobs"
+ **User Request**: "Find me software engineering jobs"
    - FastAPI endpoint receives request
    - Creates A2A task with user context
 
-2. **Profile Discovery** (via Firebase MCP):
+ **Profile Discovery** (via Firebase MCP):
    \`\`\`python
    tools = MCPToolset(
        connection_params=StdioServerParams(
@@ -266,13 +266,13 @@ Here's how our system leverages A2A to orchestrate a complete job search:
    )
    \`\`\`
 
-3. **Job Search Orchestration**:
+ **Job Search Orchestration**:
    - Profile Agent retrieves preferences via A2A message
    - Listing Agent searches multiple platforms via A2A task delegation
    - Company Research Agent analyzes each opportunity
    - All communicate via standardized A2A messages
 
-4. **Resume Tailoring** (La'Kaleigh's domain):
+ **Resume Tailoring** (La'Kaleigh's domain):
    - Seven sequential agents collaborate via A2A
    - Each agent transforms the resume incrementally
    - Final agent generates professional Word document
@@ -384,11 +384,11 @@ While we used Google's ADK, the A2A protocol allowed us to potentially integrate
 
 ## Real-World Benefits We've Observed
 
-1. **Modularity**: When La'Kaleigh needed to update the resume optimization logic, she could do so without touching the job search components. A2A's standardized interface meant changes were isolated.
+   **Modularity**: When La'Kaleigh needed to update the resume optimization logic, she could do so without touching the job search components. A2A's standardized interface meant changes were isolated.
 
-2. **Scalability**: Each agent can be deployed and scaled independently. The resume agent might need more compute resources than the profile agent - A2A's distributed nature allows this flexibility.
+   **Scalability**: Each agent can be deployed and scaled independently. The resume agent might need more compute resources than the profile agent - A2A's distributed nature allows this flexibility.
 
-3. **Debugging**: A2A's structured task/message model made debugging much easier:
+   **Debugging**: A2A's structured task/message model made debugging much easier:
    \`\`\`python
    logger.info(f"Running job search for user: {user_id} with timeout: {self.timeout}s")
    # Track each agent's contribution
@@ -396,7 +396,7 @@ While we used Google's ADK, the A2A protocol allowed us to potentially integrate
    logger.info("Received company research update")
    \`\`\`
 
-4. **Extensibility**: Adding new capabilities is straightforward. Want to add a cover letter generator? Create a new agent with an A2A interface and add it to the coordinator's sub-agents.
+   **Extensibility**: Adding new capabilities is straightforward. Want to add a cover letter generator? Create a new agent with an A2A interface and add it to the coordinator's sub-agents.
 
 ## Lessons Learned
 
