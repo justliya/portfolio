@@ -59,7 +59,7 @@ export default function Main() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              I've always been curious about how people think, connect, and communicate.
+              I&apos;ve always been curious about how people think, connect, and communicate.
             </motion.p>
 
             <motion.p
@@ -159,7 +159,7 @@ export default function Main() {
               transition={{ duration: 0.6, delay: 1.3 }}
               className="text-tertiary"
             >
-              Outside of tech, I love playing chess, art journaling, reading, and learning new things.
+              Outside of tech, I love teaching and playing chess, art journaling, reading, and learning new things.
             </motion.p>
           </motion.div>
 
@@ -175,8 +175,8 @@ export default function Main() {
                 Let's Build Something Amazing Together
               </h3>
               <p className="text-content/80 mb-6 max-w-2xl mx-auto">
-                I'm passionate about creating technology that makes a real difference in people's lives. 
-                Whether it's improving accessibility, building AI solutions, or developing innovative applications.
+                I&apos;m passionate about creating technology that makes a real difference in people&apos;s lives. 
+                Whether it&apos;s improving accessibility, building AI solutions, or developing innovative applications.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
