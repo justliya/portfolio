@@ -1,26 +1,9 @@
 "use client";
 
-import React from 'react';
-import { GraduationCap, Calendar, MapPin, Book, Award, Users, Download, Eye, X } from 'lucide-react';
+import { GraduationCap, Calendar, MapPin, Book, Award, Users, Eye } from 'lucide-react';
+import Image from 'next/image';
 
 const EducationSection: React.FC = () => {
-  const [showPDFPreview, setShowPDFPreview] = React.useState(false);
-  const [previewPDF, setPreviewPDF] = React.useState<string>('');
-
-  const handlePreview = (pdfPath: string) => {
-    setPreviewPDF(pdfPath);
-    setShowPDFPreview(true);
-  };
-
-  const handleDownload = (pdfPath: string, filename: string) => {
-    const link = document.createElement('a');
-    link.href = pdfPath;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   const education = [
     {
       degree: 'Bachelor of Arts, Interdisciplinary Studies',
@@ -162,10 +145,12 @@ const EducationSection: React.FC = () => {
                   {/* Badge */}
                   <div className="flex-shrink-0 flex flex-col items-center">
                     <div className="w-32 h-32 mb-4 rounded-xl overflow-hidden bg-white p-2">
-                      <img
+                      <Image
                         src={cert.badgeUrl}
                         alt={`${cert.title} Badge`}
-                        className="w-full h-full object-contain"
+                        width={128}
+                        height={128}
+                        className="object-contain"
                       />
                     </div>
                     <span className="px-3 py-1 bg-gradient-to-r from-green-500 to-green-600 text-white text-sm font-semibold rounded-full">
@@ -234,40 +219,6 @@ const EducationSection: React.FC = () => {
             ))}
           </div>
         </div>
-
-
-        {/* PDF Preview Modal */}
-        {showPDFPreview && (
-          <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-            <div className="bg-gray-900 rounded-2xl max-w-6xl max-h-[95vh] overflow-hidden w-full flex flex-col border border-gray-700">
-              <div className="sticky top-0 bg-gray-900 border-b border-gray-700 p-6 flex justify-between items-center">
-                <h3 className="text-2xl font-bold text-white">Resume Preview</h3>
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => handleDownload(previewPDF, 'Aaliyah_Johnson_Resume.pdf')}
-                    className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
-                  >
-                    <Download className="w-4 h-4" />
-                    Download
-                  </button>
-                  <button 
-                    onClick={() => setShowPDFPreview(false)}
-                    className="p-2 hover:bg-gray-800 rounded-full transition-colors"
-                  >
-                    <X className="w-6 h-6 text-gray-400" />
-                  </button>
-                </div>
-              </div>
-              <div className="flex-1 p-6 overflow-auto">
-                <iframe
-                  src={previewPDF}
-                  className="w-full h-[80vh] border border-gray-700 rounded-lg"
-                  title="Resume Preview"
-                />
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );

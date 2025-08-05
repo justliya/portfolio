@@ -1,4 +1,4 @@
-import { Code, Sparkles, GraduationCap } from 'lucide-react';
+import { Code, Sparkles } from 'lucide-react';
 
 const experiences = [
   {
