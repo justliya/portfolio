@@ -31,11 +31,11 @@ const projects = [
     },
     {
         title: "TSLA Stock Threshold Detector",
-        description: "Binary search algorithm detecting stock threshold data",
+        description: "Binary search algorithm efficiently detecting first occurrence of Tesla stock threshold breach in O(log n) time with real market data visualization.",
         tech: [
             { name: "Python", icon: FaNode, color: "#3776AB" },
-            { name: "Pandas", icon: SiFirebase, color: "#150458" },
-            { name: "Matplotlib", icon: SiFirebase, color: "#11557C" },
+            { name: "Pandas", icon: SiTypescript, color: "#150458" },
+            { name: "Matplotlib", icon: SiTypescript, color: "#11557C" },
          
         ],
         image: '/projects/image.png',
