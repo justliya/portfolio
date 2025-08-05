@@ -44,19 +44,6 @@ const experiences = [
     ],
     badges: ['React', 'Node.js', 'Python', 'Flask', 'Firebase', 'Jest', 'CI/CD']
   },
-  {
-    icon: <GraduationCap className="w-6 h-6 text-green-400" />,
-    role: 'B.A. Interdisciplinary Studies',
-    company: 'Columbia College Chicago',
-    time: '2020 – 2024 · Chicago, IL',
-    description: [
-      'Specialized in Deaf Studies and Arts in Health, combining creative insight with technical skill.',
-      'Developed human-centered design approach for accessible technology solutions.',
-      'Built foundation in empathy-driven development and inclusive design principles.',
-      'Integrated creative problem-solving with systematic analytical thinking.'
-    ],
-    badges: ['Accessibility', 'Human-Centered Design', 'Creative Problem Solving', 'Inclusive Design']
-  }
 ];
 
 export default function ExperienceSection() {
