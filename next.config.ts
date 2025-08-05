@@ -6,14 +6,9 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: [
-          {
-            key: "Cross-Origin-Embedder-Policy",
-            value: "credentialless", // Allows YouTube embeds and similar
-          },
-          {
-            key: "Cross-Origin-Opener-Policy",
-            value: "same-origin", // Required with COEP
-          },
+          { key: "Cross-Origin-Embedder-Policy", value: "credentialless" },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+          { key: "Permissions-Policy", value: "web-share=(self)" }, // ✅ Add this line
         ],
       },
     ];
