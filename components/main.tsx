@@ -131,7 +131,7 @@ export default function Main() {
               transition={{ duration: 0.6, delay: 1.3 }}
               className="text-tertiary"
             >
-              Outside of tech, I love teaching and playing chess, art journaling, reading, and learning new things.
+              Outside of tech, I love playing chess, art journaling, reading, and learning new things.
             </motion.p>
           </motion.div>
 
