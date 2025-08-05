@@ -1,9 +1,46 @@
 "use client";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { FileText, Eye, X, Download } from "lucide-react";
 
 export default function Main() {
+  const [showPDFPreview, setShowPDFPreview] = useState(false);
+  const [previewPDF, setPreviewPDF] = useState<string>('');
+  const [previewTitle, setPreviewTitle] = useState<string>('');
+
+  const handlePreview = (pdfPath: string, title: string) => {
+    setPreviewPDF(pdfPath);
+    setPreviewTitle(title);
+    setShowPDFPreview(true);
+  };
+
+  const handleDownload = (pdfPath: string, filename: string) => {
+    const link = document.createElement('a');
+    link.href = pdfPath;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const researchPapers = [
+    {
+      title: "Hands On Project Proposal",
+      description: "Final project proposal for a web application offering visually expressive, arts-based resources and workshops designed to improve accessibility and connection between Deaf and hearing individuals.",
+      path: "/research/Hands On Project Proposal.pdf",
+      type: "Project Proposal"
+    },
+    {
+      title: "Final Literature Review",
+      description: "Comprehensive literature review exploring how arts in health can decrease language deprivation, communication barriers, and isolation experienced by the Deaf community.",
+      path: "/research/Final Literature Review.pdf",
+      type: "Literature Review"
+    }
+  ];
+
   return (
-    <section className="py-32 relative" id="journey">
+    <>
+      <section className="py-32 relative" id="journey">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
         <motion.div
@@ -172,6 +209,112 @@ export default function Main() {
           </motion.div>
         </div>
       </div>
-    </section>
+      </section>
+
+      {/* Research Section */}
+      <section className="py-16 relative bg-gradient-to-b from-gray-900 to-black">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Section Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-content mb-4 text-center">
+              Research & Academic Work
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-tertiary rounded-full" />
+            <p className="text-xl text-content/70 max-w-2xl mx-auto text-center mt-6">
+              Explore my academic research on arts in health, accessibility, and the Deaf community
+            </p>
+          </motion.div>
+
+          {/* Research Papers Grid */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {researchPapers.map((paper, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="bg-surface/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10"
+              >
+                {/* Paper Icon and Type */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
+                    <FileText className="w-6 h-6 text-white" />
+                  </div>
+                  <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium">
+                    {paper.type}
+                  </span>
+                </div>
+
+                {/* Paper Title */}
+                <h3 className="text-2xl font-bold text-content mb-4">
+                  {paper.title}
+                </h3>
+
+                {/* Paper Description */}
+                <p className="text-content/80 leading-relaxed mb-6">
+                  {paper.description}
+                </p>
+
+                {/* Action Buttons */}
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => handlePreview(paper.path, paper.title)}
+                    className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium transition-colors"
+                  >
+                    <Eye className="w-4 h-4" />
+                    <span>Preview</span>
+                  </button>
+                  <button
+                    onClick={() => handleDownload(paper.path, `${paper.title.replace(/\s+/g, '_')}.pdf`)}
+                    className="flex items-center gap-2 px-4 py-2 bg-surface border border-white/20 text-content hover:bg-white/10 rounded-lg font-medium transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download</span>
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PDF Preview Modal */}
+      {showPDFPreview && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="bg-surface rounded-2xl max-w-6xl max-h-[95vh] overflow-hidden w-full flex flex-col border border-white/10">
+            <div className="sticky top-0 bg-surface border-b border-white/10 p-6 flex justify-between items-center">
+              <h3 className="text-2xl font-bold text-content">{previewTitle}</h3>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => handleDownload(previewPDF, `${previewTitle.replace(/\s+/g, '_')}.pdf`)}
+                  className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                >
+                  <Download className="w-4 h-4" />
+                  Download
+                </button>
+                <button 
+                  onClick={() => setShowPDFPreview(false)}
+                  className="p-2 hover:bg-white/10 rounded-full transition-colors"
+                >
+                  <X className="w-6 h-6 text-content" />
+                </button>
+              </div>
+            </div>
+            <div className="flex-1 p-6 overflow-auto">
+              <iframe
+                src={previewPDF}
+                className="w-full h-[80vh] border border-white/10 rounded-lg"
+                title="Research Paper Preview"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
