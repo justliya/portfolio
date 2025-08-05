@@ -9,8 +9,8 @@ const blogPosts = [
     id: "ai-job-search-assistant",
     title: "Building an AI-Powered Job Search Assistant: Automating the Modern Job Hunt",
     excerpt: "How my partner La'Kaleigh Harris and I built a comprehensive AI-powered job search assistant using Google's A2A protocol and Agent Development Kit, featuring multi-agent orchestration and real-time collaboration.",
-    date: "2025-01-15",
-    readTime: "15 min read",
+    date: "2025-07-1",
+    readTime: "10 min read",
     tags: ["AI", "A2A", "GoogleADK", "JobSearch", "MultiAgent", "Python", "Firebase", "Collaboration"],
     slug: "ai-job-search-assistant"
   },
