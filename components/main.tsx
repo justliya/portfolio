@@ -84,7 +84,7 @@ export default function Main() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              During my capstone I researched, <span className="text-primary font-semibold">"How can utilizing arts in health decrease language deprivation, communication barriers, and isolation experienced by the Deaf community?"</span>
+              During my capstone I researched, <span className="text-primary font-semibold">&ldquo;How can utilizing arts in health decrease language deprivation, communication barriers, and isolation experienced by the Deaf community?&rdquo;</span>
             </motion.p>
 
             <motion.p
@@ -224,10 +224,6 @@ export default function Main() {
             <h2 className="text-4xl md:text-5xl font-bold text-content mb-4 text-center">
               Research & Academic Work
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-tertiary rounded-full" />
-            <p className="text-xl text-content/70 max-w-2xl mx-auto text-center mt-6">
-              Explore my academic research on arts in health, accessibility, and the Deaf community
-            </p>
           </motion.div>
 
           {/* Research Papers Grid */}
