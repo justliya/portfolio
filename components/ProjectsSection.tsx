@@ -1,17 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ExternalLink, Volume2, VolumeX } from "lucide-react";
 import Image from "next/image";
 
-const projects = [
+interface Project {
+  id: string;
+  name: string;
+  title: string;
+  image: string;
+  videoUrl: string | null;
+  link: string;
+  bullets: string[];
+  tags: string[];
+}
+
+const projects: Project[] = [
   {
     id: "gethired",
     name: "GetHiredAI",
     title: "Autonomous Multi-Agent Job Search Assistant",
     image: "/projects/GetHired.png",
-    videoUrl: "https://www.youtube.com/embed/0wDw9HG9y6w?si=ToE99s8NfchhU0om&autoplay=1&mute=1",
+    videoUrl: "https://www.youtube-nocookie.com/embed/0wDw9HG9y6w?si=ToE99s8NfchhU0om&autoplay=1&mute=1&controls=1&rel=0",
     link: "https://devpost.com/software/gethired-g6kxs2",
     bullets: [
       "Autonomous multi-agent system automating entire job application pipeline through coordinated AI agents.",
@@ -28,8 +39,8 @@ const projects = [
     name: "Promptly",
     title: "AI Prompt Assistant (Apple App Store)",
     image: "/projects/ecommerce.png",
-    videoUrl: "https://www.youtube.com/embed/NhygDvUzAQU?autoplay=1&mute=1",
-    link: "#",
+    videoUrl: "https://www.youtube-nocookie.com/embed/NhygDvUzAQU?autoplay=1&mute=1&controls=1&rel=0",
+    link: "https://apps.apple.com/app/promptly", // Replace with actual App Store link
     bullets: [
       "React Native mobile app helping creators craft high-quality AI prompts with precision.",
       "Integrated Firebase for authentication, NoSQL database management, and state persistence.",
@@ -61,7 +72,7 @@ const projects = [
     name: "Skyline",
     title: "Interactive Baseball Platform",
     image: "/projects/analytics.jpg",
-    videoUrl: "https://www.youtube.com/embed/iZ6Ee2VmO2Q?autoplay=1&mute=1",
+    videoUrl: "https://www.youtube-nocookie.com/embed/iZ6Ee2VmO2Q?autoplay=1&mute=1&controls=1&rel=0",
     link: "https://devpost.com/software/skyline-x20soe",
     bullets: [
       "Built during Google Cloud x MLB Hackathon using React Native, Firebase, and MLB's GUMBO API.",
@@ -74,36 +85,57 @@ const projects = [
 ];
 
 const ProjectsSection: React.FC = () => {
-  const [currentProject, setCurrentProject] = useState(0);
-  const [showDetails, setShowDetails] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [currentProject, setCurrentProject] = useState<number>(0);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [videoError, setVideoError] = useState<{[key: string]: boolean}>({});
+  const [currentVideoUrl, setCurrentVideoUrl] = useState<string>("");
 
-  const nextProject = () => {
+  // Update video URL when project or mute state changes
+  useEffect(() => {
+    const project = projects[currentProject];
+    if (project.videoUrl) {
+      const baseUrl = project.videoUrl;
+      const newUrl = baseUrl.replace(
+        isMuted ? /mute=0/g : /mute=1/g,
+        isMuted ? 'mute=1' : 'mute=0'
+      );
+      setCurrentVideoUrl(newUrl);
+    }
+  }, [currentProject, isMuted]);
+
+  const nextProject = (): void => {
     setCurrentProject((prev) => (prev + 1) % projects.length);
     setShowDetails(false);
   };
 
-  const prevProject = () => {
+  const prevProject = (): void => {
     setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
     setShowDetails(false);
   };
 
-  const handleProjectClick = () => {
+  const handleProjectClick = (): void => {
     setShowDetails(!showDetails);
   };
 
-  const toggleMute = () => {
+  const toggleMute = (): void => {
     setIsMuted(!isMuted);
-    // Update iframe src to toggle mute
-    const iframe = document.querySelector('iframe');
-    if (iframe && projects[currentProject].videoUrl) {
-      const currentSrc = iframe.src;
-      if (isMuted) {
-        iframe.src = currentSrc.replace('mute=1', 'mute=0');
-      } else {
-        iframe.src = currentSrc.replace('mute=0', 'mute=1');
-      }
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string): void => {
+    if (!link || link === "#") {
+      e.preventDefault();
+      alert('Link not available yet');
     }
+  };
+
+  const handleVideoError = (projectId: string): void => {
+    console.error('Video failed to load for project:', projectId);
+    setVideoError(prev => ({...prev, [projectId]: true}));
+  };
+
+  const handleVideoLoad = (projectName: string): void => {
+    console.log('Video loaded successfully:', projectName);
   };
 
   return (
@@ -132,6 +164,7 @@ const ProjectsSection: React.FC = () => {
           <button
             onClick={prevProject}
             className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 hover:bg-black/70 rounded-full transition-colors backdrop-blur-sm border border-white/10"
+            aria-label="Previous project"
           >
             <ChevronLeft className="w-6 h-6 text-white" />
           </button>
@@ -139,6 +172,7 @@ const ProjectsSection: React.FC = () => {
           <button
             onClick={nextProject}
             className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 hover:bg-black/70 rounded-full transition-colors backdrop-blur-sm border border-white/10"
+            aria-label="Next project"
           >
             <ChevronRight className="w-6 h-6 text-white" />
           </button>
@@ -165,6 +199,7 @@ const ProjectsSection: React.FC = () => {
                       alt={projects[currentProject].name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                     
@@ -199,17 +234,23 @@ const ProjectsSection: React.FC = () => {
                   <div className="grid lg:grid-cols-2 gap-8">
                     {/* Video/Image Section */}
                     <div className="relative">
-                      {projects[currentProject].videoUrl ? (
+                      {projects[currentProject].videoUrl && !videoError[projects[currentProject].id] ? (
                         <div className="relative aspect-video rounded-xl overflow-hidden bg-black">
                           <iframe
-                            src={projects[currentProject].videoUrl}
-                            className="w-full h-full"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            key={`video-${projects[currentProject].id}-${isMuted}`}
+                            src={currentVideoUrl}
+                            className="w-full h-full border-0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
+                            loading="lazy"
+                            title={`${projects[currentProject].name} Demo Video`}
+                            onLoad={() => handleVideoLoad(projects[currentProject].name)}
+                            onError={() => handleVideoError(projects[currentProject].id)}
                           />
                           <button
                             onClick={toggleMute}
-                            className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors backdrop-blur-sm"
+                            className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors backdrop-blur-sm z-10"
+                            aria-label={isMuted ? "Unmute video" : "Mute video"}
                           >
                             {isMuted ? (
                               <VolumeX className="w-5 h-5 text-white" />
@@ -217,6 +258,23 @@ const ProjectsSection: React.FC = () => {
                               <Volume2 className="w-5 h-5 text-white" />
                             )}
                           </button>
+                        </div>
+                      ) : videoError[projects[currentProject].id] ? (
+                        <div className="aspect-video rounded-xl overflow-hidden bg-gray-800 flex items-center justify-center">
+                          <div className="text-center text-gray-400">
+                            <div className="text-4xl mb-2">📹</div>
+                            <p className="mb-2">Video temporarily unavailable</p>
+                            {projects[currentProject].videoUrl && (
+                              <a 
+                                href={projects[currentProject].videoUrl!.replace('/embed/', '/watch?v=').split('?')[0]}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-purple-400 hover:text-purple-300 underline inline-block"
+                              >
+                                Watch on YouTube
+                              </a>
+                            )}
+                          </div>
                         </div>
                       ) : (
                         <div className="aspect-video rounded-xl overflow-hidden">
@@ -267,15 +325,23 @@ const ProjectsSection: React.FC = () => {
                       </div>
 
                       <div className="flex gap-4">
-                        <a
-                          href={projects[currentProject].link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors font-medium"
-                        >
-                          <span>View Project</span>
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
+                        {projects[currentProject].link && projects[currentProject].link !== "#" ? (
+                          <a
+                            href={projects[currentProject].link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => handleLinkClick(e, projects[currentProject].link)}
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors font-medium"
+                          >
+                            <span>View Project</span>
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        ) : (
+                          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gray-600 rounded-lg font-medium cursor-not-allowed opacity-50">
+                            <span>Link Coming Soon</span>
+                            <ExternalLink className="w-4 h-4" />
+                          </div>
+                        )}
                         <button
                           onClick={() => setShowDetails(false)}
                           className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors font-medium"
@@ -304,6 +370,7 @@ const ProjectsSection: React.FC = () => {
                     ? 'bg-purple-500'
                     : 'bg-gray-600 hover:bg-gray-500'
                 }`}
+                aria-label={`Go to project ${idx + 1}`}
               />
             ))}
           </div>
