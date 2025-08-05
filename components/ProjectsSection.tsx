@@ -22,7 +22,7 @@ const projects: Project[] = [
     name: "GetHiredAI",
     title: "Autonomous Multi-Agent Job Search Assistant",
     image: "/projects/GetHired.png",
-    videoUrl: "https://www.youtube.com/embed/0wDw9HG9y6w",
+    videoUrl: "https://www.youtube.com/embed/0wDw9HG9y6w?si=ToE99s8NfchhU0om",
     link: "https://devpost.com/software/gethired-g6kxs2",
     bullets: [
       "Autonomous multi-agent system automating entire job application pipeline through coordinated AI agents.",
@@ -39,7 +39,7 @@ const projects: Project[] = [
     name: "Promptly",
     title: "AI Prompt Assistant (Apple App Store)",
     image: "/projects/ecommerce.png",
-    videoUrl: "https://www.youtube.com/embed/NhygDvUzAQU",
+    videoUrl: "https://www.youtube.com/embed/NhygDvUzAQU?si=T6A-SCnqtyFq9Jcb",
     link: "https://apps.apple.com/app/promptly", // Replace with actual App Store link
     bullets: [
       "React Native mobile app helping creators craft high-quality AI prompts with precision.",
@@ -72,7 +72,7 @@ const projects: Project[] = [
     name: "Skyline",
     title: "Interactive Baseball Platform",
     image: "/projects/analytics.jpg",
-    videoUrl: "https://www.youtube.com/embed/iZ6Ee2VmO2Q",
+    videoUrl: "https://www.youtube.com/embed/iZ6Ee2VmO2Q?si=YourSiParameterHere",
     link: "https://devpost.com/software/skyline-x20soe",
     bullets: [
       "Built during Google Cloud x MLB Hackathon using React Native, Firebase, and MLB's GUMBO API.",
@@ -123,9 +123,9 @@ const ProjectsSection: React.FC = () => {
   };
 
   const getVideoUrl = (baseUrl: string): string => {
-    // Clean URL and add parameters
-    const cleanUrl = baseUrl.split('?')[0]; // Remove existing parameters
-    return `${cleanUrl}?rel=0&modestbranding=1&mute=${isMuted ? '1' : '0'}`;
+    // Add mute parameter to existing URL
+    const separator = baseUrl.includes('?') ? '&' : '?';
+    return `${baseUrl}${separator}mute=${isMuted ? '1' : '0'}`;
   };
 
   return (
@@ -227,15 +227,18 @@ const ProjectsSection: React.FC = () => {
                       {projects[currentProject].videoUrl && !videoError[projects[currentProject].id] ? (
                         <div className="relative aspect-video rounded-xl overflow-hidden bg-black">
                           <iframe
-                            key={`${projects[currentProject].id}-${isMuted}-${Date.now()}`}
+                            key={`${projects[currentProject].id}-${isMuted}`}
+                            width="100%"
+                            height="100%"
                             src={getVideoUrl(projects[currentProject].videoUrl!)}
-                            className="w-full h-full border-0"
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
                             allowFullScreen
-                            title={`${projects[currentProject].name} Demo Video`}
+                            className="w-full h-full border-0 rounded-xl"
                             onLoad={() => console.log('Video loaded:', projects[currentProject].name)}
                             onError={() => handleVideoError(projects[currentProject].id)}
-                            style={{ border: 'none' }}
                           />
                           <button
                             onClick={toggleMute}
@@ -256,7 +259,7 @@ const ProjectsSection: React.FC = () => {
                             <p className="mb-4 text-lg">Video temporarily unavailable</p>
                             {projects[currentProject].videoUrl && (
                               <a 
-                                href={projects[currentProject].videoUrl!.replace('/embed/', '/watch?v=')}
+                                href={projects[currentProject].videoUrl!.replace('/embed/', '/watch?v=').split('?')[0]}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 underline"
