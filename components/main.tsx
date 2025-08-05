@@ -172,7 +172,7 @@ export default function Main() {
           >
             <div className="bg-gradient-to-r from-primary/10 to-tertiary/10 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-content mb-4">
-                Let's Build Something Amazing Together
+                Let&apos;s Build Something Amazing Together
               </h3>
               <p className="text-content/80 mb-6 max-w-2xl mx-auto">
                 I&apos;m passionate about creating technology that makes a real difference in people&apos;s lives. 
@@ -213,7 +213,7 @@ export default function Main() {
             className="flex flex-col items-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-content mb-4 text-center">
-              Research & Academic Work
+              Research &amp; Academic Work
             </h2>
           </motion.div>
 
