@@ -1,37 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ExternalLink, Volume2, VolumeX } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
+import YouTube, { YouTubeProps } from "react-youtube";
 
-interface Project {
-  id: string;
-  name: string;
-  title: string;
-  image: string;
-  videoUrl: string | null;
-  link: string;
-  bullets: string[];
-  tags: string[];
-}
-
-const projects: Project[] = [
+const projects = [
   {
     id: "gethired",
     name: "GetHiredAI",
     title: "Autonomous Multi-Agent Job Search Assistant",
     image: "/projects/GetHired.png",
-    videoUrl: "https://www.youtube.com/embed/0wDw9HG9y6w?si=ToE99s8NfchhU0om",
+    videoId: "0wDw9HG9y6w",
     link: "https://devpost.com/software/gethired-g6kxs2",
-    bullets: [
-      "Autonomous multi-agent system automating entire job application pipeline through coordinated AI agents.",
-      "Custom remote MCP server with JSearch API integration for dynamic tool orchestration and agent workflows.",
-      "Google ADK architecture with modular sub-agent logic, prompt routing, and multi-step coordination.",
-      "Standardized JSON schemas for inter-agent communication with fallback logic for API timeouts.",
-      "Reduces manual application time from hours to minutes with contextually relevant resume modifications.",
-      "Firebase integration: Authentication, Firestore data persistence, and Storage for resume management."
-    ],
+    bullets: [/* your bullet points */],
     tags: ["Python", "Google ADK", "Firebase", "OpenAI API"]
   },
   {
@@ -39,15 +22,9 @@ const projects: Project[] = [
     name: "Promptly",
     title: "AI Prompt Assistant (Apple App Store)",
     image: "/projects/ecommerce.png",
-    videoUrl: "https://www.youtube.com/embed/NhygDvUzAQU?si=T6A-SCnqtyFq9Jcb",
-    link: "https://apps.apple.com/app/promptly", // Replace with actual App Store link
-    bullets: [
-      "React Native mobile app helping creators craft high-quality AI prompts with precision.",
-      "Integrated Firebase for authentication, NoSQL database management, and state persistence.",
-      "Implemented CI/CD pipelines using GitHub Actions and EAS/Revopush for seamless OTA updates.",
-      "Leveraged OpenAI API to generate prompts optimized for relevance, clarity, and structure.",
-      "Achieved 100+ downloads within first 2 weeks through performance tuning and intuitive UX."
-    ],
+    videoId: "NhygDvUzAQU",
+    link: "#",
+    bullets: [/* your bullet points */],
     tags: ["React Native", "TypeScript", "Firebase"]
   },
   {
@@ -55,16 +32,9 @@ const projects: Project[] = [
     name: "TSLA Stock Threshold Detector",
     title: "Binary Search Algorithm Project",
     image: "/projects/image.png",
-    videoUrl: null,
+    videoId: null,
     link: "https://github.com/justliya/Algorithm-Projects",
-    bullets: [
-      "Binary search algorithm efficiently detecting first occurrence of Tesla stock threshold breach in O(log n) time.",
-      "Visualizes TSLA stock data with key political and economic events (Trump Inauguration, All-Time High markers).",
-      "Integrated Alpha Vantage API for real historical market data from Dec 2024 - Mar 2025 period.",
-      "Matplotlib visualization with annotated plots showing threshold crossings and market crash analysis.",
-      "Demonstrates algorithm optimization on real-world financial data with monthly and daily view options.",
-      "Analyzes correlation between political events and Tesla stock performance during volatile market period."
-    ],
+    bullets: [/* your bullet points */],
     tags: ["Python", "Pandas", "Matplotlib"]
   },
   {
@@ -72,61 +42,37 @@ const projects: Project[] = [
     name: "Skyline",
     title: "Interactive Baseball Platform",
     image: "/projects/analytics.jpg",
-    videoUrl: "https://www.youtube.com/embed/iZ6Ee2VmO2Q?si=YourSiParameterHere",
+    videoId: "iZ6Ee2VmO2Q",
     link: "https://devpost.com/software/skyline-x20soe",
-    bullets: [
-      "Built during Google Cloud x MLB Hackathon using React Native, Firebase, and MLB's GUMBO API.",
-      "Real-time AI sports analytics helping fans understand game momentum and win probabilities.",
-      "Led UI/UX design and AI integration to support both casual fans and analysts.",
-      "Implemented live data processing for comprehensive matchup analysis and predictions."
-    ],
+    bullets: [/* your bullet points */],
     tags: ["React Native", "TypeScript", "Firebase", "Node.js"]
   }
 ];
 
 const ProjectsSection: React.FC = () => {
-  const [currentProject, setCurrentProject] = useState<number>(0);
-  const [showDetails, setShowDetails] = useState<boolean>(false);
-  const [isMuted, setIsMuted] = useState<boolean>(true);
-  const [videoError, setVideoError] = useState<{[key: string]: boolean}>({});
+  const [currentProject, setCurrentProject] = useState(0);
+  const [showDetails, setShowDetails] = useState(false);
 
-  const nextProject = (): void => {
+  const nextProject = () => {
     setCurrentProject((prev) => (prev + 1) % projects.length);
     setShowDetails(false);
-    setVideoError({}); // Reset video errors when changing projects
   };
 
-  const prevProject = (): void => {
+  const prevProject = () => {
     setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
     setShowDetails(false);
-    setVideoError({}); // Reset video errors when changing projects
   };
 
-  const handleProjectClick = (): void => {
+  const handleProjectClick = () => {
     setShowDetails(!showDetails);
   };
 
-  const toggleMute = (): void => {
-    setIsMuted(!isMuted);
+  const onYouTubeReady: YouTubeProps["onReady"] = (event) => {
+    // Optional: Auto-pause if needed
+    // event.target.pauseVideo();
   };
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string): void => {
-    if (!link || link === "#") {
-      e.preventDefault();
-      alert('Link not available yet');
-    }
-  };
-
-  const handleVideoError = (projectId: string): void => {
-    console.error('Video failed to load for project:', projectId);
-    setVideoError(prev => ({...prev, [projectId]: true}));
-  };
-
-  const getVideoUrl = (baseUrl: string): string => {
-    // Add mute parameter to existing URL
-    const separator = baseUrl.includes('?') ? '&' : '?';
-    return `${baseUrl}${separator}mute=${isMuted ? '1' : '0'}`;
-  };
+  const current = projects[currentProject];
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white py-16 px-6">
@@ -148,26 +94,15 @@ const ProjectsSection: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Carousel Container */}
+        {/* Carousel */}
         <div className="relative max-w-6xl mx-auto">
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevProject}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 hover:bg-black/70 rounded-full transition-colors backdrop-blur-sm border border-white/10"
-            aria-label="Previous project"
-          >
+          <button onClick={prevProject} className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 rounded-full hover:bg-black/70 backdrop-blur-sm border border-white/10">
             <ChevronLeft className="w-6 h-6 text-white" />
           </button>
-          
-          <button
-            onClick={nextProject}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 hover:bg-black/70 rounded-full transition-colors backdrop-blur-sm border border-white/10"
-            aria-label="Next project"
-          >
+          <button onClick={nextProject} className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 rounded-full hover:bg-black/70 backdrop-blur-sm border border-white/10">
             <ChevronRight className="w-6 h-6 text-white" />
           </button>
 
-          {/* Main Carousel */}
           <AnimatePresence mode="wait">
             <motion.div
               key={currentProject}
@@ -178,35 +113,21 @@ const ProjectsSection: React.FC = () => {
               className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-3xl overflow-hidden"
             >
               {!showDetails ? (
-                /* Project Preview */
-                <div 
-                  className="cursor-pointer group"
-                  onClick={handleProjectClick}
-                >
+                <div onClick={handleProjectClick} className="cursor-pointer group">
                   <div className="relative h-96 md:h-[500px]">
                     <Image
-                      src={projects[currentProject].image}
-                      alt={projects[currentProject].name}
+                      src={current.image}
+                      alt={current.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                    
-                    {/* Project Info Overlay */}
                     <div className="absolute bottom-8 left-8 right-8">
-                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                        {projects[currentProject].name}
-                      </h2>
-                      <p className="text-xl text-gray-300 mb-4">
-                        {projects[currentProject].title}
-                      </p>
+                      <h2 className="text-3xl md:text-4xl font-bold">{current.name}</h2>
+                      <p className="text-xl text-gray-300 mb-4">{current.title}</p>
                       <div className="flex flex-wrap gap-2">
-                        {projects[currentProject].tags.map((tag, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30"
-                          >
+                        {current.tags.map((tag, i) => (
+                          <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30">
                             {tag}
                           </span>
                         ))}
@@ -219,81 +140,38 @@ const ProjectsSection: React.FC = () => {
                   </div>
                 </div>
               ) : (
-                /* Project Details */
                 <div className="p-8">
                   <div className="grid lg:grid-cols-2 gap-8">
-                    {/* Video/Image Section */}
+                    {/* Video or Image */}
                     <div className="relative">
-                      {projects[currentProject].videoUrl && !videoError[projects[currentProject].id] ? (
-                        <div className="relative aspect-video rounded-xl overflow-hidden bg-black">
-                          <iframe
-                            key={`${projects[currentProject].id}-${isMuted}`}
-                            width="100%"
-                            height="100%"
-                            src={getVideoUrl(projects[currentProject].videoUrl!)}
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                            allowFullScreen
-                            className="w-full h-full border-0 rounded-xl"
-                            onLoad={() => console.log('Video loaded:', projects[currentProject].name)}
-                            onError={() => handleVideoError(projects[currentProject].id)}
-                          />
-                          <button
-                            onClick={toggleMute}
-                            className="absolute top-4 right-4 p-2 bg-black/70 hover:bg-black/90 rounded-full transition-colors backdrop-blur-sm z-20 border border-white/20"
-                            aria-label={isMuted ? "Unmute video" : "Mute video"}
-                          >
-                            {isMuted ? (
-                              <VolumeX className="w-5 h-5 text-white" />
-                            ) : (
-                              <Volume2 className="w-5 h-5 text-white" />
-                            )}
-                          </button>
-                        </div>
-                      ) : videoError[projects[currentProject].id] ? (
-                        <div className="aspect-video rounded-xl overflow-hidden bg-gray-800 flex items-center justify-center border border-gray-700">
-                          <div className="text-center text-gray-400 p-8">
-                            <div className="text-4xl mb-4">📹</div>
-                            <p className="mb-4 text-lg">Video temporarily unavailable</p>
-                            {projects[currentProject].videoUrl && (
-                              <a 
-                                href={projects[currentProject].videoUrl!.replace('/embed/', '/watch?v=').split('?')[0]}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 underline"
-                              >
-                                <span>Watch on YouTube</span>
-                                <ExternalLink className="w-4 h-4" />
-                              </a>
-                            )}
-                          </div>
-                        </div>
+                      {current.videoId ? (
+                        <YouTube
+                          videoId={current.videoId}
+                          onReady={onYouTubeReady}
+                          opts={{
+                            height: "390",
+                            width: "100%",
+                            playerVars: { autoplay: 1, mute: 1 }
+                          }}
+                          className="rounded-xl overflow-hidden"
+                        />
                       ) : (
-                        <div className="aspect-video rounded-xl overflow-hidden">
-                          <Image
-                            src={projects[currentProject].image}
-                            alt={projects[currentProject].name}
-                            width={600}
-                            height={400}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
+                        <Image
+                          src={current.image}
+                          alt={current.name}
+                          width={640}
+                          height={390}
+                          className="rounded-xl object-cover"
+                        />
                       )}
                     </div>
 
-                    {/* Details Section */}
+                    {/* Details */}
                     <div>
-                      <h2 className="text-3xl font-bold text-white mb-2">
-                        {projects[currentProject].name}
-                      </h2>
-                      <p className="text-xl text-purple-400 mb-6">
-                        {projects[currentProject].title}
-                      </p>
-                      
+                      <h2 className="text-3xl font-bold mb-2">{current.name}</h2>
+                      <p className="text-xl text-purple-400 mb-6">{current.title}</p>
                       <div className="space-y-4 mb-6">
-                        {projects[currentProject].bullets.map((bullet, idx) => (
+                        {current.bullets.map((bullet: string, idx: number) => (
                           <motion.div
                             key={idx}
                             initial={{ opacity: 0, x: -20 }}
@@ -301,44 +179,25 @@ const ProjectsSection: React.FC = () => {
                             transition={{ delay: idx * 0.1 }}
                             className="flex items-start gap-3"
                           >
-                            <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
-                            <p className="text-gray-300 leading-relaxed">{bullet}</p>
+                            <div className="w-2 h-2 bg-purple-500 rounded-full mt-2" />
+                            <p className="text-gray-300">{bullet}</p>
                           </motion.div>
                         ))}
                       </div>
 
-                      <div className="flex flex-wrap gap-3 mb-6">
-                        {projects[currentProject].tags.map((tag, idx) => (
-                          <span
-                            key={idx}
-                            className="px-4 py-2 bg-purple-500/10 text-purple-300 rounded-full border border-purple-500/20"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="flex gap-4 flex-wrap">
-                        {projects[currentProject].link && projects[currentProject].link !== "#" ? (
-                          <a
-                            href={projects[currentProject].link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => handleLinkClick(e, projects[currentProject].link)}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors font-medium"
-                          >
-                            <span>View Project</span>
-                            <ExternalLink className="w-4 h-4" />
-                          </a>
-                        ) : (
-                          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gray-600 rounded-lg font-medium cursor-not-allowed opacity-50">
-                            <span>Link Coming Soon</span>
-                            <ExternalLink className="w-4 h-4" />
-                          </div>
-                        )}
+                      <div className="flex gap-4 mt-4">
+                        <a
+                          href={current.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium"
+                        >
+                          <span>View Project</span>
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
                         <button
                           onClick={() => setShowDetails(false)}
-                          className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors font-medium"
+                          className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg font-medium"
                         >
                           Back to Overview
                         </button>
@@ -350,7 +209,7 @@ const ProjectsSection: React.FC = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Project Indicators */}
+          {/* Indicator */}
           <div className="flex justify-center gap-3 mt-8">
             {projects.map((_, idx) => (
               <button
@@ -359,33 +218,10 @@ const ProjectsSection: React.FC = () => {
                   setCurrentProject(idx);
                   setShowDetails(false);
                 }}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  idx === currentProject
-                    ? 'bg-purple-500'
-                    : 'bg-gray-600 hover:bg-gray-500'
+                className={`w-3 h-3 rounded-full ${
+                  idx === currentProject ? "bg-purple-500" : "bg-gray-600 hover:bg-gray-500"
                 }`}
-                aria-label={`Go to project ${idx + 1}`}
               />
-            ))}
-          </div>
-
-          {/* Project Navigation */}
-          <div className="flex justify-center gap-4 mt-6 flex-wrap">
-            {projects.map((project, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  setCurrentProject(idx);
-                  setShowDetails(false);
-                }}
-                className={`px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
-                  idx === currentProject
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
-                }`}
-              >
-                {project.name}
-              </button>
             ))}
           </div>
         </div>
