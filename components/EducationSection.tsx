@@ -23,21 +23,6 @@ const EducationSection: React.FC = () => {
 
   const education = [
     {
-      degree: 'Master of Arts - Arts in Medicine',
-      school: 'University of Florida',
-      period: '2024 - Present',
-      location: 'Gainesville, FL (Remote)',
-      status: 'Current',
-      color: 'from-blue-500 to-blue-600',
-      description: 'Advancing expertise in arts-based healthcare interventions, therapeutic programming, and community wellness initiatives.',
-      highlights: [
-        'Arts in Health Theory and Practice',
-        'Community-Based Program Development',
-        'Research Methods in Creative Arts Therapy',
-        'Cultural Competency in Healthcare Settings'
-      ]
-    },
-    {
       degree: 'Bachelor of Arts, Interdisciplinary Studies',
       school: 'Columbia College Chicago',
       period: '2020 - 2024',
@@ -250,30 +235,6 @@ const EducationSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-purple-600 to-pink-500 p-8 rounded-2xl text-white max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">Let's Connect</h3>
-            <p className="mb-6 opacity-90">
-              Interested in collaborating on arts-based wellness programming, accessibility initiatives, or community engagement projects?
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="mailto:Justliya@icloud.com" 
-                className="px-6 py-3 bg-white text-gray-800 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                Get In Touch
-              </a>
-              <button
-                onClick={() => handlePreview('/Artist_Resume-2025.pdf')}
-                className="flex items-center gap-2 px-4 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-800 transition-all"
-              >
-                <Eye className="w-4 h-4" />
-                Preview Resume
-              </button>
-            </div>
-          </div>
-        </div>
 
         {/* PDF Preview Modal */}
         {showPDFPreview && (
