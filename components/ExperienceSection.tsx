@@ -2,6 +2,21 @@ import { Code, Sparkles, GraduationCap } from 'lucide-react';
 
 const experiences = [
   {
+    icon: <Code className="w-6 h-6 text-cyan-400" />,
+    role: 'AI Agent Builder Intern',
+    company: 'NeuralSeek',
+    time: 'August 2025 – September 2025 · Remote',
+    description: [
+      '6-week immersive internship focused on building scalable AI agents using NeuralSeek\'s agent platform.',
+      'Complete Level 1–3 NeuralSeek certifications in Agent Foundations, Business Applications, and Multi-Tier AI Architecture.',
+      'Design and deploy an original AI agent contributing to real customer-facing go-to-market initiatives.',
+      'Conduct competitive analysis on the AI agent landscape to inform strategy and product positioning.',
+      'Present a capstone project demonstrating creativity, technical proficiency, and practical business application.',
+      'Collaborate with peers and NeuralSeek\'s organizational development and community teams to support innovation and ecosystem expansion.'
+    ],
+    badges: ['AI Agents', 'NeuralSeek Platform', 'Multi-Tier Architecture', 'Go-to-Market', 'Competitive Analysis', 'Capstone Project']
+  },
+  {
     icon: <Sparkles className="w-6 h-6 text-purple-400" />,
     role: 'Prompt Engineer',
     company: 'Outlier AI',
