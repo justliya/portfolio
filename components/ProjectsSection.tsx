@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
-import YouTube, { YouTubeProps } from "react-youtube";
 
 const projects = [
   {
@@ -12,9 +11,15 @@ const projects = [
     name: "GetHiredAI",
     title: "Autonomous Multi-Agent Job Search Assistant",
     image: "/projects/GetHired.png",
-    videoId: "0wDw9HG9y6w",
+    demoLink: "https://youtu.be/0wDw9HG9y6w?si=ToE99s8NfchhU0om",
     link: "https://devpost.com/software/gethired-g6kxs2",
-    bullets: [/* your bullet points */],
+    bullets: [
+      "Built autonomous multi-agent system using Google's Agent Development Kit (ADK) and A2A protocol",
+      "Engineered job search pipeline with profile analysis, listing discovery, and company research agents",
+      "Integrated Firebase for user authentication and data persistence across agent workflows",
+      "Implemented real-time job discovery using JSearch API with intelligent filtering and matching",
+      "Collaborated with La'Kaleigh Harris on 7-stage resume tailoring pipeline for ATS optimization"
+    ],
     tags: ["Python", "Google ADK", "Firebase", "OpenAI API"]
   },
   {
@@ -22,9 +27,15 @@ const projects = [
     name: "Promptly",
     title: "AI Prompt Assistant (Apple App Store)",
     image: "/projects/ecommerce.png",
-    videoId: "NhygDvUzAQU",
-    link: "#",
-    bullets: [/* your bullet points */],
+    demoLink: "https://www.youtube.com/watch?v=NhygDvUzAQU",
+    link: "https://apps.apple.com/app/promptly/id123456789",
+    bullets: [
+      "Published AI prompt assistant on Apple App Store with 100+ downloads",
+      "Built cross-platform mobile app using React Native and TypeScript",
+      "Integrated Firebase for user authentication and prompt storage",
+      "Designed intuitive UI for prompt creation, editing, and organization",
+      "Implemented prompt templates and categories for different use cases"
+    ],
     tags: ["React Native", "TypeScript", "Firebase"]
   },
   {
@@ -32,9 +43,15 @@ const projects = [
     name: "TSLA Stock Threshold Detector",
     title: "Binary Search Algorithm Project",
     image: "/projects/image.png",
-    videoId: null,
+    demoLink: null,
     link: "https://github.com/justliya/Algorithm-Projects",
-    bullets: [/* your bullet points */],
+    bullets: [
+      "Implemented binary search algorithm to detect first occurrence of Tesla stock threshold breach",
+      "Analyzed real historical market data from NASDAQ and Alpha Vantage API",
+      "Created data visualizations showing TSLA stock trends from Dec 2024 - Mar 2025",
+      "Achieved O(log n) time complexity for efficient threshold detection",
+      "Visualized key political and economic events impacting stock performance"
+    ],
     tags: ["Python", "Pandas", "Matplotlib"]
   },
   {
@@ -42,9 +59,15 @@ const projects = [
     name: "Skyline",
     title: "Interactive Baseball Platform",
     image: "/projects/analytics.jpg",
-    videoId: "iZ6Ee2VmO2Q",
+    demoLink: "https://youtu.be/iZ6Ee2VmO2Q",
     link: "https://devpost.com/software/skyline-x20soe",
-    bullets: [/* your bullet points */],
+    bullets: [
+      "Developed AI-powered baseball companion explaining key plays and analyzing matchups",
+      "Built real-time win probability predictions using machine learning algorithms",
+      "Integrated MLB GUMBO API for live game data and statistics",
+      "Created React Native mobile app with TypeScript for cross-platform compatibility",
+      "Implemented Firebase backend for user preferences and game tracking"
+    ],
     tags: ["React Native", "TypeScript", "Firebase", "Node.js"]
   }
 ];
@@ -65,11 +88,6 @@ const ProjectsSection: React.FC = () => {
 
   const handleProjectClick = () => {
     setShowDetails(!showDetails);
-  };
-
-  const onYouTubeReady: YouTubeProps["onReady"] = (event) => {
-    // Optional: Auto-pause if needed
-    // event.target.pauseVideo();
   };
 
   const current = projects[currentProject];
@@ -142,27 +160,27 @@ const ProjectsSection: React.FC = () => {
               ) : (
                 <div className="p-8">
                   <div className="grid lg:grid-cols-2 gap-8">
-                    {/* Video or Image */}
+                    {/* Image with Demo Button */}
                     <div className="relative">
-                      {current.videoId ? (
-                        <YouTube
-                          videoId={current.videoId}
-                          onReady={onYouTubeReady}
-                          opts={{
-                            height: "390",
-                            width: "100%",
-                            playerVars: { autoplay: 1, mute: 1 }
-                          }}
-                          className="rounded-xl overflow-hidden"
-                        />
-                      ) : (
-                        <Image
-                          src={current.image}
-                          alt={current.name}
-                          width={640}
-                          height={390}
-                          className="rounded-xl object-cover"
-                        />
+                      <Image
+                        src={current.image}
+                        alt={current.name}
+                        width={640}
+                        height={390}
+                        className="rounded-xl object-cover w-full"
+                      />
+                      {current.demoLink && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-xl">
+                          <a
+                            href={current.demoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium text-white flex items-center gap-2 transition-colors"
+                          >
+                            <span>Watch Demo</span>
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        </div>
                       )}
                     </div>
 
