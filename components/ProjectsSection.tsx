@@ -46,16 +46,6 @@ const projects = [
     ],
     link: "https://devpost.com/software/skyline-x20soe",
   },
-  {
-    name: "NeuroInsight - AI Study Assistant",
-    bullets: [
-      "Empowers neurodivergent users with personalized task planning and routine tracking.",
-      "Built using React Native, Firebase, and TypeScript with accessibility-first design.",
-      "Features emotional check-ins and modular customization for individual needs.",
-      "Adapts dynamically to user habits and priorities for enhanced productivity support."
-    ],
-    link: "https://testflight.apple.com/join/7dGeeFcX",
-  },
 ];
 
 const ProjectsSection: React.FC = () => {
