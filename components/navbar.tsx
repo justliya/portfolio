@@ -12,7 +12,6 @@ const navItems = [
   { name: "Experience", href: "/experience" },
   { name: "Education", href: "/education" },
   { name: "Blog", href: "/blog" },
-
 ];
 
 const socialLinks = {
