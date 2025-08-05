@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FileText, Eye, X, Download } from "lucide-react";
+import { FileText, Eye, X } from "lucide-react";
 
 export default function Main() {
   const [showPDFPreview, setShowPDFPreview] = useState(false);
@@ -12,15 +12,6 @@ export default function Main() {
     setPreviewPDF(pdfPath);
     setPreviewTitle(title);
     setShowPDFPreview(true);
-  };
-
-  const handleDownload = (pdfPath: string, filename: string) => {
-    const link = document.createElement('a');
-    link.href = pdfPath;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   const researchPapers = [
@@ -265,13 +256,6 @@ export default function Main() {
                     <Eye className="w-4 h-4" />
                     <span>Preview</span>
                   </button>
-                  <button
-                    onClick={() => handleDownload(paper.path, `${paper.title.replace(/\s+/g, '_')}.pdf`)}
-                    className="flex items-center gap-2 px-4 py-2 bg-surface border border-white/20 text-content hover:bg-white/10 rounded-lg font-medium transition-colors"
-                  >
-                    <Download className="w-4 h-4" />
-                    <span>Download</span>
-                  </button>
                 </div>
               </motion.div>
             ))}
@@ -286,13 +270,6 @@ export default function Main() {
             <div className="sticky top-0 bg-surface border-b border-white/10 p-6 flex justify-between items-center">
               <h3 className="text-2xl font-bold text-content">{previewTitle}</h3>
               <div className="flex gap-3">
-                <button
-                  onClick={() => handleDownload(previewPDF, `${previewTitle.replace(/\s+/g, '_')}.pdf`)}
-                  className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-                >
-                  <Download className="w-4 h-4" />
-                  Download
-                </button>
                 <button 
                   onClick={() => setShowPDFPreview(false)}
                   className="p-2 hover:bg-white/10 rounded-full transition-colors"
