@@ -22,7 +22,7 @@ const projects: Project[] = [
     name: "GetHiredAI",
     title: "Autonomous Multi-Agent Job Search Assistant",
     image: "/projects/GetHired.png",
-    videoUrl: "https://www.youtube-nocookie.com/embed/0wDw9HG9y6w?si=ToE99s8NfchhU0om&autoplay=1&mute=1&controls=1&rel=0",
+    videoUrl: "https://www.youtube.com/embed/0wDw9HG9y6w",
     link: "https://devpost.com/software/gethired-g6kxs2",
     bullets: [
       "Autonomous multi-agent system automating entire job application pipeline through coordinated AI agents.",
@@ -39,7 +39,7 @@ const projects: Project[] = [
     name: "Promptly",
     title: "AI Prompt Assistant (Apple App Store)",
     image: "/projects/ecommerce.png",
-    videoUrl: "https://www.youtube-nocookie.com/embed/NhygDvUzAQU?autoplay=1&mute=1&controls=1&rel=0",
+    videoUrl: "https://www.youtube.com/embed/NhygDvUzAQU",
     link: "https://apps.apple.com/app/promptly", // Replace with actual App Store link
     bullets: [
       "React Native mobile app helping creators craft high-quality AI prompts with precision.",
@@ -72,7 +72,7 @@ const projects: Project[] = [
     name: "Skyline",
     title: "Interactive Baseball Platform",
     image: "/projects/analytics.jpg",
-    videoUrl: "https://www.youtube-nocookie.com/embed/iZ6Ee2VmO2Q?autoplay=1&mute=1&controls=1&rel=0",
+    videoUrl: "https://www.youtube.com/embed/iZ6Ee2VmO2Q",
     link: "https://devpost.com/software/skyline-x20soe",
     bullets: [
       "Built during Google Cloud x MLB Hackathon using React Native, Firebase, and MLB's GUMBO API.",
@@ -89,29 +89,17 @@ const ProjectsSection: React.FC = () => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [videoError, setVideoError] = useState<{[key: string]: boolean}>({});
-  const [currentVideoUrl, setCurrentVideoUrl] = useState<string>("");
-
-  // Update video URL when project or mute state changes
-  useEffect(() => {
-    const project = projects[currentProject];
-    if (project.videoUrl) {
-      const baseUrl = project.videoUrl;
-      const newUrl = baseUrl.replace(
-        isMuted ? /mute=0/g : /mute=1/g,
-        isMuted ? 'mute=1' : 'mute=0'
-      );
-      setCurrentVideoUrl(newUrl);
-    }
-  }, [currentProject, isMuted]);
 
   const nextProject = (): void => {
     setCurrentProject((prev) => (prev + 1) % projects.length);
     setShowDetails(false);
+    setVideoError({}); // Reset video errors when changing projects
   };
 
   const prevProject = (): void => {
     setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
     setShowDetails(false);
+    setVideoError({}); // Reset video errors when changing projects
   };
 
   const handleProjectClick = (): void => {
@@ -134,8 +122,10 @@ const ProjectsSection: React.FC = () => {
     setVideoError(prev => ({...prev, [projectId]: true}));
   };
 
-  const handleVideoLoad = (projectName: string): void => {
-    console.log('Video loaded successfully:', projectName);
+  const getVideoUrl = (baseUrl: string): string => {
+    // Clean URL and add parameters
+    const cleanUrl = baseUrl.split('?')[0]; // Remove existing parameters
+    return `${cleanUrl}?rel=0&modestbranding=1&mute=${isMuted ? '1' : '0'}`;
   };
 
   return (
@@ -237,19 +227,19 @@ const ProjectsSection: React.FC = () => {
                       {projects[currentProject].videoUrl && !videoError[projects[currentProject].id] ? (
                         <div className="relative aspect-video rounded-xl overflow-hidden bg-black">
                           <iframe
-                            key={`video-${projects[currentProject].id}-${isMuted}`}
-                            src={currentVideoUrl}
+                            key={`${projects[currentProject].id}-${isMuted}-${Date.now()}`}
+                            src={getVideoUrl(projects[currentProject].videoUrl!)}
                             className="w-full h-full border-0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
-                            loading="lazy"
                             title={`${projects[currentProject].name} Demo Video`}
-                            onLoad={() => handleVideoLoad(projects[currentProject].name)}
+                            onLoad={() => console.log('Video loaded:', projects[currentProject].name)}
                             onError={() => handleVideoError(projects[currentProject].id)}
+                            style={{ border: 'none' }}
                           />
                           <button
                             onClick={toggleMute}
-                            className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors backdrop-blur-sm z-10"
+                            className="absolute top-4 right-4 p-2 bg-black/70 hover:bg-black/90 rounded-full transition-colors backdrop-blur-sm z-20 border border-white/20"
                             aria-label={isMuted ? "Unmute video" : "Mute video"}
                           >
                             {isMuted ? (
@@ -260,18 +250,19 @@ const ProjectsSection: React.FC = () => {
                           </button>
                         </div>
                       ) : videoError[projects[currentProject].id] ? (
-                        <div className="aspect-video rounded-xl overflow-hidden bg-gray-800 flex items-center justify-center">
-                          <div className="text-center text-gray-400">
-                            <div className="text-4xl mb-2">📹</div>
-                            <p className="mb-2">Video temporarily unavailable</p>
+                        <div className="aspect-video rounded-xl overflow-hidden bg-gray-800 flex items-center justify-center border border-gray-700">
+                          <div className="text-center text-gray-400 p-8">
+                            <div className="text-4xl mb-4">📹</div>
+                            <p className="mb-4 text-lg">Video temporarily unavailable</p>
                             {projects[currentProject].videoUrl && (
                               <a 
-                                href={projects[currentProject].videoUrl!.replace('/embed/', '/watch?v=').split('?')[0]}
+                                href={projects[currentProject].videoUrl!.replace('/embed/', '/watch?v=')}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-purple-400 hover:text-purple-300 underline inline-block"
+                                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 underline"
                               >
-                                Watch on YouTube
+                                <span>Watch on YouTube</span>
+                                <ExternalLink className="w-4 h-4" />
                               </a>
                             )}
                           </div>
@@ -324,7 +315,7 @@ const ProjectsSection: React.FC = () => {
                         ))}
                       </div>
 
-                      <div className="flex gap-4">
+                      <div className="flex gap-4 flex-wrap">
                         {projects[currentProject].link && projects[currentProject].link !== "#" ? (
                           <a
                             href={projects[currentProject].link}
@@ -376,7 +367,7 @@ const ProjectsSection: React.FC = () => {
           </div>
 
           {/* Project Navigation */}
-          <div className="flex justify-center gap-4 mt-6">
+          <div className="flex justify-center gap-4 mt-6 flex-wrap">
             {projects.map((project, idx) => (
               <button
                 key={idx}
