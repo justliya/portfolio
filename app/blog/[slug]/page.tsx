@@ -78,17 +78,17 @@ coordinator = Agent(
 ### Job Search Pipeline
 A sequential agent that executes three specialized sub-agents:
 
-1. **Profile Agent**: Fetches user preferences from Firebase
+ **Profile Agent**: Fetches user preferences from Firebase
    - Connects to Firebase using MCP (Model Context Protocol)
    - Retrieves saved job preferences, skills, and target roles
    - No user interaction required - fully automated
 
-2. **Listing Search Agent**: Discovers relevant job opportunities
+ **Listing Search Agent**: Discovers relevant job opportunities
    - Integrates with JSearch and Glassdoor APIs
    - Filters based on location, salary, experience level
    - Returns structured job data with direct application links
 
-3. **Company Research Agent**: Provides deep company intelligence
+**Company Research Agent**: Provides deep company intelligence
    - Analyzes company culture through employee reviews
    - Gathers salary data and interview insights
    - Generates comprehensive reports for each company
@@ -462,8 +462,8 @@ A2A isn't just another protocol - it's an enabler for the next generation of AI 
   },
   'mcp-job-search-server': {
     title: "Building a Real-Time Job Search MCP Server: From API to Agent with HTTP Streaming and Google ADK",
-    date: "2025-06-27",
-    readTime: "5 min read",
+    date: "2025-08-1",
+    readTime: "10 min read",
     tags: ["MCP", "AI", "Agents", "GoogleADK", "Python", "Streaming", "JobSearch", "VertexAI"],
     content: `# Building a Real-Time Job Search MCP Server: From API to Agent with HTTP Streaming and Google ADK
 
