@@ -109,7 +109,7 @@ export default function Main() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              After graduating, naturally I wanted to pursue a career in my field. However, job hunting was tough, most positions required years of experience, and I kept getting rejections.
+              After graduating, naturally I wanted to pursue a career in my field. However, job hunting was tough, most positions required years of experience.
             </motion.p>
 
             <motion.p
