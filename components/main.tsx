@@ -1,12 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FileText, Eye, X } from "lucide-react";
+import { FileText, Eye, X, Download } from "lucide-react";
 
 export default function Main() {
   const [showPDFPreview, setShowPDFPreview] = useState(false);
   const [previewPDF, setPreviewPDF] = useState<string>('');
   const [previewTitle, setPreviewTitle] = useState<string>('');
+  const resumePath = "/resume/AI-SE.pdf";
 
   const handlePreview = (pdfPath: string, title: string) => {
     setPreviewPDF(pdfPath);
@@ -200,6 +201,46 @@ export default function Main() {
           </motion.div>
         </div>
       </div>
+      </section>
+
+      {/* Resume Section */}
+      <section className="py-16 bg-gradient-to-r from-primary/10 via-surface to-tertiary/10">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-surface/60 border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl shadow-primary/10 flex flex-col md:flex-row items-start md:items-center gap-6"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                <FileText className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-content">Resume</h3>
+                <p className="text-content/70">Preview in-browser or download a copy.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3 ml-auto">
+              <button
+                onClick={() => handlePreview(resumePath, "Resume")}
+                className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium transition-colors"
+              >
+                <Eye className="w-4 h-4" />
+                <span>Preview</span>
+              </button>
+              <a
+                href={resumePath}
+                download
+                className="flex items-center gap-2 px-4 py-2 bg-surface border border-white/15 text-content hover:bg-white/10 rounded-lg font-medium transition-colors"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download</span>
+              </a>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Research Section */}
